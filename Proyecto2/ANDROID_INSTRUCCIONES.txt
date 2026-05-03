@@ -1,0 +1,126 @@
+ESTRUCTURA DE PROYECTO ANDROID - INSTRUCCIONES DE CREACIÓN
+
+╔════════════════════════════════════════════════════════════════╗
+║  OPCIÓN 1: CREAR PROYECTO DESDE ANDROID STUDIO (RECOMENDADO) ║
+╚════════════════════════════════════════════════════════════════╝
+
+1. Abrir Android Studio
+
+2. File → New → New Android Project
+
+3. Configurar como:
+   - Name: BluetoothAccess
+   - Package name: com.example.bluetoothaccess
+   - Save location: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android
+   - Language: Kotlin
+   - Minimum API level: 21
+   - Finished
+
+4. Una vez creado el proyecto, copiar los archivos de este repositorio
+
+═══════════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════════╗
+║      OPCIÓN 2: CREAR MANUALMENTE (SI NO TIENES STUDIO)       ║
+╚════════════════════════════════════════════════════════════════╝
+
+En Windows PowerShell o CMD:
+
+cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\android
+
+1. Crear directorio raíz (si no existe):
+   mkdir build
+   mkdir .gradle
+
+2. Copiar settings.gradle (ver archivo adjunto)
+
+3. Crear estructura:
+   mkdir app\src\main\java\com\example\bluetoothaccess
+   mkdir app\src\main\res\layout
+   mkdir app\src\main\res\values
+   mkdir app\src\main\res\values-night
+   mkdir app\src\main\res\mipmap
+   mkdir app\src\test\java\com\example\bluetoothaccess
+   mkdir app\src\androidTest\java\com\example\bluetoothaccess
+
+4. Copiar archivos build.gradle, AndroidManifest.xml, etc.
+
+═══════════════════════════════════════════════════════════════════
+
+ARCHIVOS NECESARIOS (EN ORDEN):
+
+1. ✓ build.gradle (root)
+   Ubicación: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\build.gradle
+
+2. ✓ app/build.gradle
+   Ubicación: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\app\build.gradle
+
+3. ✓ app/src/main/AndroidManifest.xml
+   Ubicación: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\app\src\main\
+
+4. ✓ app/src/main/java/com/example/bluetoothaccess/MainActivity.kt
+   Ubicación: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\app\src\main\java\...
+
+5. ✓ app/src/main/res/layout/activity_main.xml
+   Ubicación: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\app\src\main\res\layout\
+
+6. ✓ app/src/main/res/values/strings.xml
+   Ubicación: c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\app\src\main\res\values\
+
+═══════════════════════════════════════════════════════════════════
+
+FUNCIONALIDADES IMPLEMENTADAS:
+
+✓ Búsqueda de dispositivos Bluetooth
+✓ Conexión a ESP32 vía SPP (Serial Port Profile)
+✓ Envío de token al servidor
+✓ Recepción de respuesta (GRANTED/DENIED)
+✓ Manejo de permisos (Android 6.0+)
+✓ UI intuitiva con estado visual
+✓ Operaciones asincrónicas con Coroutines
+✓ Manejo de errores y excepciones
+
+═══════════════════════════════════════════════════════════════════
+
+FLUJO DE LA APLICACIÓN:
+
+1. Usuario abre app → Solicita permisos Bluetooth
+2. Usuario clic en "Buscar Dispositivos"
+3. Lista muestra dispositivos encontrados
+4. Usuario selecciona "ESP32-Acceso"
+5. Usuario clic en "Conectar"
+6. Se establece conexión SPP con ESP32
+7. Usuario ingresa token (ej: TOKEN123)
+8. Usuario clic en "Solicitar Acceso"
+9. Token se envía al ESP32 vía Bluetooth
+10. ESP32 verifica en servidor HTTP
+11. Respuesta llega a la app: GRANTED o DENIED
+12. UI muestra resultado (verde o rojo)
+13. Usuario puede desconectar
+
+═══════════════════════════════════════════════════════════════════
+
+COMPILACIÓN Y EJECUCIÓN:
+
+Opción A: Con Android Studio
+   1. Abrir proyecto
+   2. Conectar dispositivo Android (o emulador)
+   3. Run → Run 'app' (botón verde)
+
+Opción B: Con Gradle desde terminal
+   cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\android
+   gradlew build
+   gradlew installDebug
+
+═══════════════════════════════════════════════════════════════════
+
+REQUISITOS:
+
+• Java 11+
+• Android SDK 21+ (Android 5.0 mínimo)
+• Gradle 7.0+
+• Kotlin 1.8+
+• Dispositivo Android con Bluetooth
+• Permisos de Bluetooth y Localización
+
+═══════════════════════════════════════════════════════════════════

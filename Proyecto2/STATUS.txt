@@ -1,0 +1,159 @@
+╔════════════════════════════════════════════════════════════════╗
+║                   ESTADO DEL PROYECTO                         ║
+║        Sistema de Control de Acceso con Bluetooth              ║
+╚════════════════════════════════════════════════════════════════╝
+
+📊 COMPONENTES
+
+┌─ SERVIDOR HTTP (Flask) ─────────────────────────────────────┐
+│                                                              │
+│ Status:     ✅ COMPLETADO                                   │
+│ Ubicación:  c:\Users\Eduardo Garcia\Desktop\Proyecto2\server│
+│                                                              │
+│ Archivos:                                                    │
+│   ✓ app.py              - Servidor Flask funcional          │
+│   ✓ requirements.txt    - Dependencias (flask)              │
+│   ✓ test_api.py         - Suite de pruebas                  │
+│   ✓ quick_test.py       - Ejecutor automático               │
+│                                                              │
+│ Endpoints:                                                   │
+│   ✓ GET  /check?token={TOKEN}  - Verifica autorización     │
+│   ✓ POST /log                  - Registra eventos           │
+│   ✓ GET  /usuarios             - Lista usuarios             │
+│   ✓ POST /usuarios             - Agrega usuario             │
+│                                                              │
+│ Base de Datos:                                               │
+│   ✓ access.db (SQLite)                                       │
+│     - Tabla: usuarios (id, token, nombre)                    │
+│     - Tabla: logs (id, token, timestamp, resultado)          │
+│     - Usuarios predefinidos: TOKEN123, INVALID              │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ FIRMWARE ESP32 (ESP-IDF) ──────────────────────────────────┐
+│                                                              │
+│ Status:     📋 CÓDIGO DISPONIBLE (requiere setup)           │
+│ Ubicación:  c:\Users\Eduardo Garcia\Desktop\Proyecto2\esp32 │
+│                                                              │
+│ Funcionalidades:                                             │
+│   ✓ Bluetooth Classic (SPP - Serial Port Profile)           │
+│   ✓ Comunicación Wi-Fi HTTP                                 │
+│   ✓ Control de LED RGB (GPIO 25, 26, 27)                   │
+│   ✓ Control de Buzzer (GPIO 32)                             │
+│                                                              │
+│ Flujo:                                                       │
+│   1. Recibe token vía SPP (Bluetooth)                        │
+│   2. Consulta servidor HTTP para verificar                  │
+│   3. Activa LED: Verde (GRANTED) / Rojo (DENIED)           │
+│   4. Buzzer: 150ms (GRANTED) / 600ms (DENIED)              │
+│   5. Envía respuesta a app Android                          │
+│                                                              │
+│ Requisitos Setup:                                            │
+│   ⚠ Instalar ESP-IDF v5.1+                                  │
+│   ⚠ Copiar código desde manual a main/main.c                │
+│   ⚠ Configurar SSID, PASSWORD, IP_SERVIDOR                  │
+│   ⚠ Compilar y subir firmware                               │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ APLICACIÓN ANDROID (Kotlin) ───────────────────────────────┐
+│                                                              │
+│ Status:     📋 ESTRUCTURA LISTA (requiere implementación)   │
+│ Ubicación:  c:\Users\Eduardo Garcia\Desktop\Proyecto2\android│
+│                                                              │
+│ Funcionalidades Requeridas:                                  │
+│   ⚠ Buscar dispositivos Bluetooth                            │
+│   ⚠ Conectar vía SPP (UUID: 00001101-0000-1000-8000...)    │
+│   ⚠ Enviar token al ESP32                                    │
+│   ⚠ Recibir respuesta (GRANTED/DENIED)                      │
+│   ⚠ Mostrar resultado en UI                                 │
+│                                                              │
+│ Permisos Requeridos:                                         │
+│   ⚠ android.permission.BLUETOOTH                             │
+│   ⚠ android.permission.BLUETOOTH_ADMIN                       │
+│   ⚠ android.permission.BLUETOOTH_CONNECT                     │
+│   ⚠ android.permission.BLUETOOTH_SCAN                        │
+│   ⚠ android.permission.ACCESS_FINE_LOCATION                 │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+
+🧪 PRUEBAS DISPONIBLES
+
+┌─ Cómo Ejecutar Pruebas ─────────────────────────────────────┐
+│                                                              │
+│ 1️⃣  AUTOMÁTICO (Recomendado)                                 │
+│    Terminal 1: python c:\Users\Eduardo Garcia\Desktop\Proyecto2\run_tests.py
+│                                                              │
+│ 2️⃣  MANUAL (Para debug)                                     │
+│    Terminal 1: cd server && python app.py                   │
+│    Terminal 2: cd server && python test_api.py              │
+│                                                              │
+│ 3️⃣  BATCH (Windows)                                          │
+│    Doble-clic: c:\Users\Eduardo Garcia\Desktop\Proyecto2\test_endpoints.bat
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ Pruebas Incluidas ─────────────────────────────────────────┐
+│                                                              │
+│ [TEST 1] Token Autorizado      → ✓ /check?token=TOKEN123   │
+│ [TEST 2] Token No Autorizado   → ✓ /check?token=INVALID    │
+│ [TEST 3] Listar Usuarios       → ✓ GET /usuarios           │
+│ [TEST 4] Registrar Usuario     → ✓ POST /usuarios          │
+│ [TEST 5] Registrar Evento      → ✓ POST /log               │
+│ [TEST 6] Verificar Nuevo User  → ✓ /check?token=TOKEN_NUEVO│
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+
+📚 ARCHIVOS DE DOCUMENTACIÓN CREADOS
+
+✓ README.md                      - Guía general del proyecto
+✓ INSTRUCCIONES_PRUEBAS.md       - Cómo ejecutar pruebas paso a paso
+✓ EJECUTAR_PRUEBAS.txt           - Opciones para correr pruebas
+✓ plan.md                        - Plan de implementación detallado
+
+═══════════════════════════════════════════════════════════════
+
+🔗 CONFIGURACIÓN REQUERIDA
+
+Server (Flask):
+  ✓ Puerto: 5000
+  ✓ Host: 0.0.0.0 (accesible desde LAN)
+  ✓ Base de datos: access.db (auto-creada)
+
+ESP32:
+  ⚠ Wi-Fi SSID:       [CONFIGURAR EN main.c]
+  ⚠ Wi-Fi PASSWORD:   [CONFIGURAR EN main.c]
+  ⚠ SERVER URL:       http://[IP_LOCAL]:5000
+  ⚠ Nombre Bluetooth: ESP32-Acceso (fijo)
+
+Android:
+  ⚠ UUID SPP:         00001101-0000-1000-8000-00805F9B34FB
+  ⚠ Nombre Dispositivo: ESP32-Acceso (a buscar)
+
+═══════════════════════════════════════════════════════════════
+
+✅ PRÓXIMOS PASOS
+
+1. Ejecutar pruebas del servidor
+   → Verifica que el backend funciona correctamente
+
+2. Configurar ESP32
+   → Instalar ESP-IDF v5.1+
+   → Copiar código y compilar
+   → Subir firmware a la placa
+
+3. Desarrollar App Android
+   → Implementar UI
+   → Lógica de Bluetooth SPP
+   → Manejo de permisos
+
+4. Pruebas Integradas
+   → Conectar ESP32 - Android - Servidor
+   → Validar flujo completo
+   → Pruebas de rango y confiabilidad
+
+═══════════════════════════════════════════════════════════════

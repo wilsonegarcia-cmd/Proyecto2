@@ -1,0 +1,402 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║              🧪 GUÍA DE PRUEBAS - CÓMO PROBAR EL PROYECTO                    ║
+║                                                                                ║
+║          Sistema de Control de Acceso con Bluetooth - PASO A PASO             ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ÍNDICE DE PRUEBAS
+
+1. FASE 1: Pruebas del Servidor (5 minutos)           ← EMPIEZA AQUÍ
+2. FASE 2: Prueba Manual de Endpoints (opcional)
+3. FASE 3: Preparar para Android
+4. FASE 4: Preparar para ESP32
+5. FASE 5: Integración Completa
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟢 FASE 1: PRUEBAS DEL SERVIDOR (5 MINUTOS)
+
+Este es el primer paso. El servidor es lo más fácil de probar porque no necesitas
+hardware - solo Python.
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.1: Abrir Primera Terminal
+────────────────────────────────────────────────────────────────────────────────
+
+Windows:
+  1. Presiona: Win + R
+  2. Escribe: cmd
+  3. Presiona: Enter
+
+Resultado: Se abre terminal negra (CMD)
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.2: Ir a la Carpeta del Servidor
+────────────────────────────────────────────────────────────────────────────────
+
+En la terminal, escribe:
+
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+
+Presiona: Enter
+
+Resultado: La terminal muestra:
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2\server>
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.3: Instalar Dependencias
+────────────────────────────────────────────────────────────────────────────────
+
+Escribe esto en la terminal:
+
+  python -m pip install flask requests --quiet
+
+Presiona: Enter
+
+Espera: ~30 segundos
+
+Resultado: No ve errores, vuelve al prompt (>)
+
+Nota: Si dice "python no se reconoce", necesitas instalar Python.
+      Descarga desde: https://www.python.org/downloads/
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.4: Iniciar el Servidor
+────────────────────────────────────────────────────────────────────────────────
+
+Escribe en la terminal:
+
+  python app.py
+
+Presiona: Enter
+
+Espera: 2-3 segundos
+
+RESULTADO ESPERADO (verás en la terminal):
+
+  WARNING in app.run() from the development server. Do not use the 
+  development server in a production environment. Use a production WSGI server instead.
+   * Running on http://0.0.0.0:5000
+   * Press CTRL+C to quit
+
+✓ El servidor está corriendo correctamente
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.5: Abrir Segunda Terminal (SIN CERRAR LA PRIMERA)
+────────────────────────────────────────────────────────────────────────────────
+
+Mantén la Terminal 1 abierta (con el servidor corriendo).
+
+Abre una NUEVA terminal:
+  1. Presiona: Win + R
+  2. Escribe: cmd
+  3. Presiona: Enter
+
+Resultado: Se abre otra ventana terminal
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.6: Ejecutar las Pruebas
+────────────────────────────────────────────────────────────────────────────────
+
+En la Terminal 2, escribe:
+
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+
+Presiona: Enter
+
+Luego escribe:
+
+  python test_api.py
+
+Presiona: Enter
+
+Espera: 5-10 segundos
+
+RESULTADO ESPERADO:
+
+  Test 1: Verificar token válido (TOKEN123)
+    Response: {'autorizado': True, 'nombre': 'Usuario Autorizado'}
+    ✓ PASS
+
+  Test 2: Verificar token inválido (INVALID)
+    Response: {'autorizado': False}
+    ✓ PASS
+
+  Test 3: Listar usuarios
+    Response: [{'token': 'TOKEN123', 'nombre': 'Usuario Autorizado'}, 
+               {'token': 'INVALID', 'nombre': 'No Autorizado'}]
+    ✓ PASS
+
+  Test 4: Agregar nuevo usuario
+    Response: {'status': 'agregado'}
+    ✓ PASS
+
+  Test 5: Registrar evento de acceso
+    Response: {'status': 'registrado'}
+    ✓ PASS
+
+  Test 6: Verificar nuevo usuario
+    Response: {'autorizado': True, 'nombre': 'Nuevo Usuario de Prueba'}
+    ✓ PASS
+
+  ════════════════════════════════════════════════════════════════
+  ✅ RESULTADO: 6/6 PRUEBAS PASARON
+  ════════════════════════════════════════════════════════════════
+
+✅ ¡EL SERVIDOR FUNCIONA CORRECTAMENTE!
+
+────────────────────────────────────────────────────────────────────────────────
+PASO 1.7: Detener el Servidor (Opcional)
+────────────────────────────────────────────────────────────────────────────────
+
+Cuando hayas terminado de probar:
+
+En Terminal 1 (donde corre el servidor):
+  Presiona: Ctrl + C
+
+Resultado: El servidor se detiene
+
+  Keyboard Interrupt
+  * Running on http://0.0.0.0:5000
+  ^C
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟡 FASE 2: PRUEBA MANUAL DE ENDPOINTS (Opcional, 10 minutos)
+
+Si quieres probar los endpoints manualmente sin el script test_api.py:
+
+────────────────────────────────────────────────────────────────────────────────
+PRUEBA MANUAL 1: Verificar Token
+────────────────────────────────────────────────────────────────────────────────
+
+Mantén el servidor corriendo (Terminal 1).
+
+En Terminal 2, escribe:
+
+  curl "http://localhost:5000/check?token=TOKEN123"
+
+Presiona: Enter
+
+RESULTADO ESPERADO:
+
+  {"autorizado":true,"nombre":"Usuario Autorizado"}
+
+Explicación:
+  - GET /check?token=TOKEN123
+  - Servidor busca TOKEN123 en BD
+  - Encuentra: "Usuario Autorizado"
+  - Responde: {"autorizado": true, "nombre": "Usuario Autorizado"}
+
+────────────────────────────────────────────────────────────────────────────────
+PRUEBA MANUAL 2: Token No Autorizado
+────────────────────────────────────────────────────────────────────────────────
+
+En Terminal 2, escribe:
+
+  curl "http://localhost:5000/check?token=INVALID"
+
+Presiona: Enter
+
+RESULTADO ESPERADO:
+
+  {"autorizado":false}
+
+Explicación:
+  - GET /check?token=INVALID
+  - Servidor busca INVALID
+  - NO encuentra (porque INVALID no es válido)
+  - Responde: {"autorizado": false}
+
+────────────────────────────────────────────────────────────────────────────────
+PRUEBA MANUAL 3: Listar Usuarios
+────────────────────────────────────────────────────────────────────────────────
+
+En Terminal 2, escribe:
+
+  curl "http://localhost:5000/usuarios"
+
+Presiona: Enter
+
+RESULTADO ESPERADO:
+
+  [{"token":"TOKEN123","nombre":"Usuario Autorizado"},
+   {"token":"INVALID","nombre":"No Autorizado"},
+   {"token":"NUEVO_TOKEN","nombre":"Nuevo Usuario de Prueba"}]
+
+Explicación:
+  - GET /usuarios
+  - Servidor devuelve todos los usuarios de la BD
+
+────────────────────────────────────────────────────────────────────────────────
+PRUEBA MANUAL 4: Agregar Nuevo Usuario
+────────────────────────────────────────────────────────────────────────────────
+
+En Terminal 2, escribe:
+
+  curl -X POST "http://localhost:5000/usuarios" ^
+    -H "Content-Type: application/json" ^
+    -d "{\"token\": \"MI_TOKEN\", \"nombre\": \"Mi Usuario\"}"
+
+Presiona: Enter
+
+RESULTADO ESPERADO:
+
+  {"status":"agregado"}
+
+Explicación:
+  - POST /usuarios
+  - Envía nuevo usuario: token=MI_TOKEN, nombre=Mi Usuario
+  - Servidor agrega a BD
+  - Responde: {"status": "agregado"}
+
+────────────────────────────────────────────────────────────────────────────────
+PRUEBA MANUAL 5: Registrar Evento
+────────────────────────────────────────────────────────────────────────────────
+
+En Terminal 2, escribe:
+
+  curl -X POST "http://localhost:5000/log" ^
+    -H "Content-Type: application/json" ^
+    -d "{\"token\": \"TOKEN123\", \"timestamp\": \"2026-05-03T19:30:00Z\", \"resultado\": \"GRANTED\"}"
+
+Presiona: Enter
+
+RESULTADO ESPERADO:
+
+  {"status":"registrado"}
+
+Explicación:
+  - POST /log
+  - Envía evento: token, timestamp, resultado
+  - Servidor registra en tabla logs
+  - Responde: {"status": "registrado"}
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔵 FASE 3: VERIFICAR QUE TODO ESTÁ LISTO PARA ANDROID
+
+Si las pruebas del servidor pasaron (6/6 ✓), entonces puedes continuar con Android.
+
+Lo que necesitas antes de Android:
+  ☐ Servidor funcionando (ya probado ✓)
+  ☐ Android Studio instalado (descargar)
+  ☐ Dispositivo Android con Bluetooth (teléfono/tablet)
+  ☐ Cable USB para dispositivo
+
+Próximo paso: Lee ANDROID_PASO_A_PASO.txt
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟣 FASE 4: VERIFICAR QUE TODO ESTÁ LISTO PARA ESP32
+
+Si las pruebas del servidor pasaron (6/6 ✓), entonces puedes continuar con ESP32.
+
+Lo que necesitas antes de ESP32:
+  ☐ Servidor funcionando (ya probado ✓)
+  ☐ ESP32 con cable USB
+  ☐ ESP-IDF v5.1+ instalado
+  ☐ WiFi disponible (2.4GHz)
+
+Próximo paso: Lee ESP32_CONFIGURACION.txt
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟠 FASE 5: INTEGRACIÓN COMPLETA (después de tener Android + ESP32)
+
+Cuando hayas compilado tanto Android como ESP32, entonces:
+
+1. Inicia servidor (Terminal 1):
+   cd server && python app.py
+
+2. Enciende ESP32 (debe conectarse a WiFi)
+
+3. Abre app Android en dispositivo
+
+4. En app: "Buscar Dispositivos" → Debería encontrar "ESP32-Acceso"
+
+5. Selecciona y "Conectar"
+
+6. Escribe token: TOKEN123 y presiona "Verificar Acceso"
+
+RESULTADO ESPERADO:
+  • App muestra: GRANTED (en verde)
+  • ESP32 LED: VERDE (3 segundos)
+  • ESP32 Buzzer: Sonido corto
+  • Servidor registra intento
+
+7. Escribe token: INVALID y presiona "Verificar Acceso"
+
+RESULTADO ESPERADO:
+  • App muestra: DENIED (en rojo)
+  • ESP32 LED: ROJO (3 segundos)
+  • ESP32 Buzzer: Sonido largo
+  • Servidor registra intento
+
+8. Verifica logs en servidor:
+   curl http://localhost:5000/log
+
+   Debería mostrar los intentos registrados.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ RESUMEN DE PRUEBAS
+
+Nivel 1 (Servidor):      🟢 5 MINUTOS      ← EMPIEZA AQUÍ
+Nivel 2 (Pruebas):       🟡 10 MINUTOS     (opcional)
+Nivel 3 (Android):       🟠 30 MINUTOS     (requiere compilación)
+Nivel 4 (ESP32):         🔵 1-2 HORAS      (requiere compilación)
+Nivel 5 (Integración):   🟣 30 MINUTOS     (cuando todo esté listo)
+
+TIEMPO TOTAL: 2-3 horas para tener todo funcional
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 COMIENZA AHORA
+
+Opción 1 - RÁPIDO (5 minutos):
+  1. Abre: INICIAR_SERVIDOR.bat (o sigue PASO 1.1 a 1.4)
+  2. Abre otra terminal y ejecuta: EJECUTAR_PRUEBAS_SERVIDOR.bat
+  3. Ver: 6 pruebas pasan ✓
+
+Opción 2 - MANUAL (si prefieres ver cada paso):
+  1. Sigue PASO 1.1 a 1.7 arriba
+
+Opción 3 - AUTOMÁTICO (Windows):
+  1. Doble-clic: TERMINAR_PROYECTO.bat
+  2. Ver: Automáticamente instala, inicia y prueba todo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📞 SI ALGO FALLA
+
+Error: "python no se reconoce"
+  → Instalar Python desde https://www.python.org/downloads/
+
+Error: "Puerto 5000 ya está en uso"
+  → En app.py, cambiar línea 80: port=5001 (o cualquier otro)
+  → O ejecutar: netstat -ano | findstr 5000 para ver qué lo usa
+
+Error: "ModuleNotFoundError: No module named 'flask'"
+  → Ejecutar: python -m pip install flask --quiet
+
+Error: "Connection refused"
+  → Asegurar que Terminal 1 (servidor) está corriendo
+  → Ver la ventana de Terminal 1 activa
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ LISTO PARA EMPEZAR
+
+Próximo paso:
+  👉 Abre: INICIAR_SERVIDOR.bat (haz doble clic)
+  
+  O sigue manualmente:
+  👉 Abre CMD y ejecuta: cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+  👉 Luego: python app.py
+
+═══════════════════════════════════════════════════════════════════════════════

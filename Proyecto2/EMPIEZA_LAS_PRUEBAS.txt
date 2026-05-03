@@ -1,0 +1,349 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║                  🚀 COMIENZA LAS PRUEBAS - GUÍA VISUAL                        ║
+║                                                                                ║
+║          Sistema de Control de Acceso con Bluetooth - EMPIEZA AQUÍ            ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+3️⃣ FORMAS DE COMENZAR LAS PRUEBAS
+
+═══════════════════════════════════════════════════════════════════════════════
+
+OPCIÓN 1: MÁS FÁCIL (Hace todo automáticamente) ⭐ RECOMENDADO
+───────────────────────────────────────────────────────────────
+
+1. Abre el Explorador de Archivos (Win+E)
+
+2. Ve a: c:\Users\Eduardo Garcia\Desktop\Proyecto2\
+
+3. Haz DOBLE-CLIC en: PRUEBAS_INTERACTIVO.py
+
+   Resultado: Se abre ventana con menú
+   ┌────────────────────────────────────────────────┐
+   │  🧪 PRUEBAS - SISTEMA DE CONTROL...            │
+   │  ═════════════════════════════════════════     │
+   │                                                │
+   │  📌 OPCIONES:                                  │
+   │    1. Instalar dependencias                   │
+   │    2. Iniciar servidor y ejecutar pruebas     │
+   │    3. Pruebas manuales de endpoints           │
+   │    4. Ver estado del servidor                 │
+   │    0. Salir                                   │
+   │                                                │
+   │  👉 Selecciona una opción (0-4): 2            │
+   └────────────────────────────────────────────────┘
+
+4. Escribe: 2
+   Presiona: Enter
+
+5. Espera ~10 segundos
+
+   Resultado: Verás algo como:
+   ┌────────────────────────────────────────────────┐
+   │  ========================                     │
+   │    EJECUTANDO PRUEBAS AUTOMÁTICAS             │
+   │  ========================                     │
+   │                                                │
+   │  Test 1: Verificar token válido...           │
+   │    Response: {'autorizado': True}             │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 2: Verificar token inválido...         │
+   │    Response: {'autorizado': False}            │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 3: Listar usuarios...                  │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 4: Agregar usuario...                  │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 5: Registrar evento...                 │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 6: Verificar nuevo usuario...          │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  ✅ ¡TODAS LAS PRUEBAS PASARON!              │
+   │                                                │
+   │  👉 Presiona Enter para volver...             │
+   └────────────────────────────────────────────────┘
+
+✅ ¡EL SERVIDOR FUNCIONA!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+OPCIÓN 2: AUTOMÁTICA CON BATCH (Solo Windows)
+──────────────────────────────────────────────
+
+1. Abre el Explorador de Archivos (Win+E)
+
+2. Ve a: c:\Users\Eduardo Garcia\Desktop\Proyecto2\
+
+3. Haz DOBLE-CLIC en: TERMINAR_PROYECTO.bat
+
+   Resultado: Se abre ventana de CMD
+   ┌────────────────────────────────────────────────┐
+   │  ╔════════════════════════════════════════╗    │
+   │  ║    VERIFICACIÓN Y FINALIZACIÓN...      ║    │
+   │  ╚════════════════════════════════════════╝    │
+   │                                                │
+   │  [1/5] INSTALANDO DEPENDENCIAS...             │
+   │  ✓ Dependencias instaladas                    │
+   │                                                │
+   │  [2/5] INICIANDO SERVIDOR FLASK...            │
+   │  Abriendo servidor en puerto 5000...          │
+   │  (Se abre otra ventana con el servidor)       │
+   │                                                │
+   │  [3/5] EJECUTANDO PRUEBAS DE API...           │
+   │  ✓ Pruebas del servidor completadas           │
+   │                                                │
+   │  [4/5] VERIFICANDO ARCHIVOS DE ANDROID...     │
+   │  ✓ MainActivity.kt encontrado                 │
+   │  ✓ activity_main.xml encontrado               │
+   │  ✓ strings.xml encontrado                     │
+   │  ✓ colors.xml encontrado                      │
+   │  ✓ build.gradle encontrado                    │
+   │                                                │
+   │  [5/5] GENERANDO RESUMEN FINAL...             │
+   │                                                │
+   │  ✅ SERVIDOR (Flask)                          │
+   │     - Inicializado en puerto 5000             │
+   │     - Base de datos: access.db                │
+   │     - Pruebas: COMPLETADAS                    │
+   │                                                │
+   │  ✅ ANDROID (Kotlin)                          │
+   │     - Archivos: LISTOS                        │
+   │     - MainActivity: Conecta vía SPP           │
+   │     - UI: Incluida                            │
+   │     - Permisos: Configurados                  │
+   │                                                │
+   │  ✅ ESP32 (ESP-IDF)                           │
+   │     - Código: DISPONIBLE                      │
+   │     - Bluetooth: SPP configurado              │
+   │     - HTTP: Conecta a servidor                │
+   │                                                │
+   │  🎯 PRÓXIMOS PASOS:                           │
+   │  1. Servidor (ya ejecutándose)                │
+   │  2. Android: Crear proyecto en Studio        │
+   │  3. ESP32: Instalar ESP-IDF                   │
+   │                                                │
+   │  Presiona cualquier tecla para continuar...   │
+   └────────────────────────────────────────────────┘
+
+✅ ¡PRUEBAS COMPLETADAS!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+OPCIÓN 3: MANUAL CON TERMINAL (Control total)
+──────────────────────────────────────────────
+
+1. Abre Terminal (Win+R → cmd → Enter)
+
+   ┌────────────────────────────────────────────────┐
+   │  C:\Windows\System32\cmd.exe                   │
+   │  Microsoft Windows [Versión 10.0.19045]       │
+   │                                                │
+   │  C:\Users\Eduardo Garcia>                      │
+   └────────────────────────────────────────────────┘
+
+2. Ve a la carpeta del servidor:
+
+   cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+
+   Presiona: Enter
+
+   ┌────────────────────────────────────────────────┐
+   │  C:\Users\Eduardo Garcia\Desktop\Proyecto2\..  │
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server>                                       │
+   └────────────────────────────────────────────────┘
+
+3. Instala las dependencias:
+
+   python -m pip install flask requests --quiet
+
+   Presiona: Enter
+
+   Espera: ~30 segundos
+
+   ┌────────────────────────────────────────────────┐
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server>                                       │
+   │  (nada mientras instala)                       │
+   │                                                │
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server>                                       │
+   └────────────────────────────────────────────────┘
+
+4. Inicia el servidor:
+
+   python app.py
+
+   Presiona: Enter
+
+   ┌────────────────────────────────────────────────┐
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server> python app.py                        │
+   │  WARNING in app.run() from the development   │
+   │  server. Do not use the development server   │
+   │  in a production environment...               │
+   │   * Running on http://0.0.0.0:5000            │
+   │   * Press CTRL+C to quit                      │
+   └────────────────────────────────────────────────┘
+
+   ✅ ¡Servidor está corriendo!
+
+5. Abre OTRA ventana de Terminal (SIN CERRAR LA PRIMERA):
+
+   Win+R → cmd → Enter
+
+   ┌────────────────────────────────────────────────┐
+   │  C:\Users\Eduardo Garcia>                      │
+   └────────────────────────────────────────────────┘
+
+6. Ve a la carpeta del servidor (Terminal 2):
+
+   cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+
+   Presiona: Enter
+
+7. Ejecuta las pruebas:
+
+   python test_api.py
+
+   Presiona: Enter
+
+   Espera: ~5-10 segundos
+
+   ┌────────────────────────────────────────────────┐
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server> python test_api.py                   │
+   │  ════════════════════════════════════════     │
+   │  EJECUTANDO PRUEBAS DE API                    │
+   │  ════════════════════════════════════════     │
+   │                                                │
+   │  Test 1: Verificar token válido (TOKEN123)  │
+   │    Response: {'autorizado': True, 'nombre':  │
+   │              'Usuario Autorizado'}            │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 2: Verificar token inválido           │
+   │    Response: {'autorizado': False}            │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 3: Listar usuarios                     │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 4: Agregar nuevo usuario               │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 5: Registrar evento de acceso          │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  Test 6: Verificar nuevo usuario             │
+   │    ✓ PASS                                     │
+   │                                                │
+   │  ════════════════════════════════════════     │
+   │  ✅ RESULTADO: 6/6 PRUEBAS PASARON           │
+   │  ════════════════════════════════════════     │
+   │                                                │
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server>                                      │
+   └────────────────────────────────────────────────┘
+
+   ✅ ¡TODAS LAS PRUEBAS PASARON!
+
+8. Para detener el servidor (Terminal 1):
+
+   Presiona: Ctrl + C
+
+   ┌────────────────────────────────────────────────┐
+   │   * Press CTRL+C to quit                      │
+   │  ^C                                            │
+   │  Keyboard Interrupt                           │
+   │   * Running on http://0.0.0.0:5000            │
+   │                                                │
+   │  c:\Users\Eduardo Garcia\Desktop\Proyecto2\.. │
+   │  server>                                      │
+   └────────────────────────────────────────────────┘
+
+   ✅ Servidor detenido
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¿CUÁL OPCIÓN ELEGIR?
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│ ⭐ OPCIÓN 1 (PRUEBAS_INTERACTIVO.py)                                       │
+│    • Lo más FÁCIL                                                          │
+│    • Menú interactivo                                                      │
+│    • Puedes hacer pruebas manuales también                                 │
+│    • Recomendado para PRINCIPIANTES                                        │
+│                                                                             │
+│ ⭐⭐ OPCIÓN 2 (TERMINAR_PROYECTO.bat)                                      │
+│    • Totalmente automático                                                 │
+│    • Se hace todo solo                                                     │
+│    • Solo Windows                                                          │
+│    • Recomendado si quieres lo MÁS RÁPIDO                                 │
+│                                                                             │
+│ ⭐⭐⭐ OPCIÓN 3 (Manual con Terminal)                                       │
+│    • Máximo control                                                        │
+│    • Ves todo paso a paso                                                  │
+│    • Funciona en cualquier SO                                              │
+│    • Recomendado si quieres ENTENDER qué sucede                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 MI RECOMENDACIÓN
+
+Si es la PRIMERA VEZ:
+  👉 Usa OPCIÓN 1 (PRUEBAS_INTERACTIVO.py) - es amiga del usuario
+
+Si QUIERES LO MÁS RÁPIDO:
+  👉 Usa OPCIÓN 2 (TERMINAR_PROYECTO.bat) - completamente automático
+
+Si QUIERES ENTENDER CADA PASO:
+  👉 Usa OPCIÓN 3 (Manual) - ves exactamente qué pasa
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ DESPUÉS QUE LAS PRUEBAS PASEN (6/6 ✓)
+
+Entonces:
+
+1. El SERVIDOR funciona ✓
+   
+2. El siguiente paso es ANDROID:
+   → Lee: ANDROID_PASO_A_PASO.txt
+
+3. Después ANDROID viene ESP32:
+   → Lee: ESP32_CONFIGURACION.txt
+
+4. Luego puedes hacer PRUEBA INTEGRADA:
+   → Conectar app Android a ESP32
+   → Verificar LED y buzzer
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 COMIENZA AHORA - ELIGE TU OPCIÓN
+
+[1] 👉 Opción 1 - Ejecutar: python PRUEBAS_INTERACTIVO.py
+    (O haz doble-clic en el archivo)
+
+[2] 👉 Opción 2 - Ejecutar: TERMINAR_PROYECTO.bat
+    (O haz doble-clic en el archivo)
+
+[3] 👉 Opción 3 - Abre CMD y sigue los pasos de arriba
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¡Adelante! El servidor está listo para probar.
+
+═══════════════════════════════════════════════════════════════════════════════

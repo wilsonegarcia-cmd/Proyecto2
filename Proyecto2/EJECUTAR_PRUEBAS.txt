@@ -1,0 +1,72 @@
+═══════════════════════════════════════════════════════════════
+  CÓMO EJECUTAR LAS PRUEBAS DEL SERVIDOR
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN 1: Script automático (RECOMENDADO)
+──────────────────────────────────────────
+1. Abre una terminal (cmd.exe)
+2. Navega a: c:\Users\Eduardo Garcia\Desktop\Proyecto2
+3. Ejecuta: python run_tests.py
+
+Esto hará automáticamente:
+- Instalar dependencias (Flask, requests)
+- Iniciar el servidor
+- Ejecutar todas las pruebas
+- Detener el servidor
+
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN 2: Manualmente (para debug)
+───────────────────────────────────
+Terminal 1 (SERVIDOR):
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+  python -m pip install flask --quiet
+  python app.py
+
+Terminal 2 (PRUEBAS):
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+  python -m pip install requests --quiet
+  python test_api.py
+
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN 3: Script Batch (Windows)
+────────────────────────────────
+Doble-clic en: test_endpoints.bat
+
+═══════════════════════════════════════════════════════════════
+
+ENDPOINTS A PROBAR
+──────────────────
+
+✓ GET /check?token=TOKEN123
+  Debe retornar: {"autorizado": true, "nombre": "Usuario Autorizado"}
+
+✓ GET /check?token=INVALID
+  Debe retornar: {"autorizado": false}
+
+✓ GET /usuarios
+  Debe retornar lista de usuarios registrados
+
+✓ POST /usuarios (nuevo usuario)
+  Envía: {"token": "TOKEN_NUEVO", "nombre": "Usuario Prueba"}
+
+✓ POST /log (registrar evento)
+  Envía: {"token": "TOKEN123", "timestamp": "...", "resultado": "GRANTED"}
+
+═══════════════════════════════════════════════════════════════
+
+¿PROBLEMAS?
+───────────
+
+1. "No se puede conectar al servidor"
+   → Asegúrate que está corriendo: python app.py
+
+2. "ModuleNotFoundError: No module named 'flask'"
+   → Instala: python -m pip install flask
+
+3. "Puerto 5000 en uso"
+   → El servidor ya está corriendo en otra terminal
+   → O ejecuta: python -m pip install flask && python app.py
+
+═══════════════════════════════════════════════════════════════

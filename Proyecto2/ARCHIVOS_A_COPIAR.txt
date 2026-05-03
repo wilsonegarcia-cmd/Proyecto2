@@ -1,0 +1,219 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║           🎯 ARCHIVOS A COPIAR EN ANDROID STUDIO - GUÍA RÁPIDA               ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+SOLO NECESITAS COPIAR 4 ARCHIVOS
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ARCHIVO 1: MainActivity.kt
+───────────────────────────────────────────────────────────────────────────────
+
+UBICACIÓN DE ORIGEN:
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2\MainActivity.kt
+
+UBICACIÓN DE DESTINO EN ANDROID STUDIO:
+  app > java > com.example.bluetoothaccess > MainActivity.kt
+  
+PASOS:
+  1. Abre en tu PC: c:\Proyecto2\MainActivity.kt
+  2. Selecciona TODO (Ctrl+A)
+  3. Copia (Ctrl+C)
+  4. En Android Studio: click en MainActivity.kt (en el árbol)
+  5. Selecciona TODO el contenido (Ctrl+A)
+  6. Elimina (Delete o Backspace)
+  7. Pega (Ctrl+V)
+  8. Guarda (Ctrl+S)
+
+✓ RESULTADO: Archivo reemplazado con la lógica Bluetooth completa
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ARCHIVO 2: activity_main.xml
+───────────────────────────────────────────────────────────────────────────────
+
+UBICACIÓN DE ORIGEN:
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2\activity_main.xml
+
+UBICACIÓN DE DESTINO EN ANDROID STUDIO:
+  res > layout > activity_main.xml
+
+PASOS:
+  1. Abre en tu PC: c:\Proyecto2\activity_main.xml
+  2. Selecciona TODO (Ctrl+A)
+  3. Copia (Ctrl+C)
+  4. En Android Studio: click en activity_main.xml (en res > layout)
+  5. Selecciona TODO (Ctrl+A)
+  6. Elimina (Delete)
+  7. Pega (Ctrl+V)
+  8. Guarda (Ctrl+S)
+
+✓ RESULTADO: Interfaz gráfica con botones, campos de texto, etc.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ARCHIVO 3: strings.xml
+───────────────────────────────────────────────────────────────────────────────
+
+UBICACIÓN DE ORIGEN:
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2\strings.xml
+
+UBICACIÓN DE DESTINO EN ANDROID STUDIO:
+  res > values > strings.xml
+
+PASOS:
+  1. Abre en tu PC: c:\Proyecto2\strings.xml
+  2. Selecciona TODO (Ctrl+A)
+  3. Copia (Ctrl+C)
+  4. En Android Studio: click en strings.xml (en res > values)
+  5. Selecciona TODO (Ctrl+A)
+  6. Elimina (Delete)
+  7. Pega (Ctrl+V)
+  8. Guarda (Ctrl+S)
+
+✓ RESULTADO: Textos en español para toda la app
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 ARCHIVO 4: colors.xml (CREAR NUEVO)
+───────────────────────────────────────────────────────────────────────────────
+
+UBICACIÓN DE ORIGEN:
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2\colors.xml
+
+UBICACIÓN DE DESTINO EN ANDROID STUDIO:
+  res > values > colors.xml (CREAR SI NO EXISTE)
+
+PASOS:
+  1. En Android Studio, click DERECHO en: res > values
+  2. Selecciona: New > Values Resource File
+  3. Nombre: colors
+  4. Click OK
+  5. Abre en tu PC: c:\Proyecto2\colors.xml
+  6. Selecciona TODO (Ctrl+A)
+  7. Copia (Ctrl+C)
+  8. En Android Studio: pega (Ctrl+V)
+  9. Guarda (Ctrl+S)
+
+✓ RESULTADO: Colores definidos para la interfaz
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 VERIFICAR: AndroidManifest.xml (SOLO REVISAR, NO REEMPLAZAR)
+───────────────────────────────────────────────────────────────────────────────
+
+UBICACIÓN EN ANDROID STUDIO:
+  app > manifests > AndroidManifest.xml
+
+QUÉ VERIFICAR:
+  Debe tener estos permisos ANTES de </manifest>:
+
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+  <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+  <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+PASOS:
+  1. Abre: app > manifests > AndroidManifest.xml
+  2. Si FALTAN permisos, cópialos desde:
+     c:\Proyecto2\android\app\src\main\AndroidManifest.xml
+  3. Guarda (Ctrl+S)
+
+✓ RESULTADO: Permisos configurados correctamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ RESUMEN: SOLO 4 ARCHIVOS
+
+┌─────────────────────────┬──────────────────────────────────────────────┐
+│ ARCHIVO                 │ UBICACIÓN EN ANDROID STUDIO                  │
+├─────────────────────────┼──────────────────────────────────────────────┤
+│ 1. MainActivity.kt      │ app > java > com.example.bluetoothaccess     │
+│ 2. activity_main.xml    │ res > layout                                 │
+│ 3. strings.xml          │ res > values                                 │
+│ 4. colors.xml           │ res > values (crear si no existe)            │
+└─────────────────────────┴──────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔍 VISUALMENTE:
+
+Android Studio (árbol de archivos):
+
+BluetoothAccess/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/example/bluetoothaccess/
+│   │   │   │       └── MainActivity.kt ◄────── COPIAR AQUÍ
+│   │   │   ├── res/
+│   │   │   │   ├── layout/
+│   │   │   │   │   └── activity_main.xml ◄────── COPIAR AQUÍ
+│   │   │   │   └── values/
+│   │   │   │       ├── strings.xml ◄────── COPIAR AQUÍ
+│   │   │   │       └── colors.xml ◄────── CREAR Y COPIAR AQUÍ
+│   │   │   └── AndroidManifest.xml ◄────── SOLO REVISAR
+│   └── build.gradle ◄────── NO TOCAR (ya está bien)
+└── ...
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ IMPORTANTE:
+
+NO NECESITAS:
+  ✗ No toques build.gradle (ya está bien generado por Android Studio)
+  ✗ No toques gradle.properties
+  ✗ No crees nuevas carpetas (Android Studio ya las tiene)
+  ✗ No reemplaces AndroidManifest.xml completamente
+
+SOLO COPIA:
+  ✓ Los 4 archivos listados arriba
+  ✓ Todo lo demás lo genera Android Studio automáticamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ DESPUÉS DE COPIAR:
+
+1. Build > Clean Project (espera a terminar)
+2. Build > Rebuild Project (espera a que compile)
+3. Si no hay errores rojos, ¡ÉXITO!
+4. Run (▶️) la app en tu dispositivo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❓ SI TIENES ERROR:
+
+"Cannot resolve symbol R"
+  → File > Invalidate Caches / Restart
+
+"Gradle build failed"
+  → Build > Clean Project > Rebuild Project
+
+"Cannot find MainActivity"
+  → Verifica que está en: app > java > com.example.bluetoothaccess
+
+"activity_main.xml no existe"
+  → Debe estar en: res > layout
+  → Si no existe, créalo: Right-click res > New > Layout Resource File
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST FINAL:
+
+[ ] 1. Copié MainActivity.kt
+[ ] 2. Copié activity_main.xml
+[ ] 3. Copié strings.xml
+[ ] 4. Creé y copié colors.xml
+[ ] 5. Verifiqué permisos en AndroidManifest.xml
+[ ] 6. Ejecuté Build > Clean Project
+[ ] 7. Ejecuté Build > Rebuild Project
+[ ] 8. No hay errores rojos
+[ ] 9. Run (▶️) la app
+[ ] 10. La app se abre en el dispositivo
+
+═══════════════════════════════════════════════════════════════════════════════

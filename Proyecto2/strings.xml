@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Access</string>
+    <string name="app_title">🔐 Control de Acceso Bluetooth</string>
+    
+    <!-- Botones -->
+    <string name="btn_scan">Buscar Dispositivos</string>
+    <string name="btn_connect">Conectar</string>
+    <string name="btn_request_access">Solicitar Acceso</string>
+    <string name="btn_disconnect">Desconectar</string>
+    
+    <!-- Estado -->
+    <string name="connected">✓ Conectado</string>
+    <string name="disconnected">✗ Desconectado</string>
+    <string name="connecting">Conectando...</string>
+    <string name="sending_token">Enviando token...</string>
+    <string name="access_granted">✓ ACCESO CONCEDIDO</string>
+    <string name="access_denied">✗ ACCESO DENEGADO</string>
+    <string name="unknown_response">? Respuesta desconocida</string>
+    
+    <!-- Etiquetas -->
+    <string name="available_devices">Dispositivos Disponibles:</string>
+    <string name="token_label">Token de Acceso:</string>
+    <string name="response_label">Respuesta del Servidor:</string>
+    
+    <!-- Mensajes -->
+    <string name="no_device_selected">No hay dispositivo seleccionado</string>
+    <string name="scanning">Escaneando...</string>
+    <string name="scanning_devices">Buscando dispositivos Bluetooth...</string>
+    <string name="no_devices_found">No se encontraron dispositivos</string>
+    <string name="no_bluetooth">Este dispositivo no tiene Bluetooth</string>
+    <string name="permissions_required">Se requieren permisos de Bluetooth</string>
+    <string name="select_device">Por favor selecciona un dispositivo</string>
+    <string name="enter_token">Por favor ingresa un token</string>
+    <string name="not_connected">No está conectado</string>
+    <string name="connection_error">Error de conexión: </string>
+    <string name="connection_failed">Falló la conexión</string>
+    <string name="connected_to_device">Conectado a: </string>
+    <string name="send_error">Error al enviar</string>
+    <string name="send_failed">Falló el envío</string>
+    <string name="disconnect_error">Error al desconectar</string>
+    <string name="error_colon">Error: </string>
+</resources>

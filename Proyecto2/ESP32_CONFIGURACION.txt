@@ -1,0 +1,444 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║                    🎛️ CONFIGURACIÓN ESP32 - PASO A PASO                       ║
+║                                                                                ║
+║         Firmware Bluetooth para Control de Acceso (Guía en Español)            ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️ TIEMPO ESTIMADO: 1-2 horas
+
+📋 REQUISITOS:
+  ✓ Windows, Mac o Linux
+  ✓ ESP32 con cable USB
+  ✓ ESP-IDF v5.1+
+  ✓ Git instalado
+  ✓ Python 3.7+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 1: INSTALAR ESP-IDF (20 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+¿QUÉ ES ESP-IDF?
+  Es el Kit de Desarrollo para ESP32. Sin esto no puedes programar el chip.
+
+DESCARGAR E INSTALAR (Windows):
+
+1. Ir a: https://github.com/espressif/esp-idf/releases
+
+2. Descargar el archivo para tu sistema:
+   - Windows: esp-idf-tools-setup-X.X.X.exe
+   - Mac/Linux: Ver instrucciones específicas
+
+3. Ejecutar el instalador
+
+4. En "Componentes":
+   ✓ Selecciona todo lo que ofrezca
+   ✓ Especialmente: Python, Git
+
+5. Esperar a que descargue (puede tomar 10-15 minutos)
+
+6. Terminar instalación
+
+VERIFICAR INSTALACIÓN:
+
+Abrir PowerShell y escribir:
+  python --version        (debe mostrar 3.7+)
+  git --version           (debe mostrar version)
+
+✓ RESULTADO: ESP-IDF instalado correctamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 2: CREAR CARPETA DEL PROYECTO (2 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+1. Abre tu PC (explorador de archivos)
+
+2. Ve a: c:\Users\Eduardo Garcia\Desktop\Proyecto2\esp32
+
+3. Si no existe la carpeta esp32, créala:
+   Click derecho > Nueva carpeta > esp32
+
+4. Dentro de esp32, crea esta estructura:
+
+   esp32/
+   ├── main/
+   │   ├── main.c           ◄── Aquí copiarás el código
+   ├── CMakeLists.txt       ◄── Configuración
+   └── idf_component.yml    ◄── Dependencias
+
+✓ RESULTADO: Estructura creada
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 3: COPIAR CÓDIGO DEL MANUAL (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+El código está en el manual PDF que compartiste.
+
+UBICACIÓN EN EL MANUAL:
+  Sección 3.5.4 "Paso 4 — Firmware del ESP32 (servidor SPP)"
+  Archivo: code/bt_access.c
+
+PASOS:
+
+1. Abre el PDF: ManualPracticas_RedesInalambricas (1).pdf
+
+2. Encuentra la sección 3.5.4 (está alrededor de la página 27-28)
+
+3. Copia TODO el código de:
+   #include <string.h>
+   hasta
+   }    ◄── Última llave
+
+4. Crea un archivo en: c:\Proyecto2\esp32\main\main.c
+
+5. Pega el código
+
+✓ RESULTADO: Código copiado
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 4: CONFIGURAR LAS CREDENCIALES (2 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En el archivo main.c que acabas de crear, encuentra estas líneas (están al inicio):
+
+  #define SSID "TU_SSID"
+  #define PASSWORD "TU_CONTRASENA"
+  #define SERVER "http://192.168.1.100:5000"
+
+REEMPLAZA CON TUS VALORES:
+
+Ejemplo:
+  #define SSID "Mi_Red_WiFi"           ◄── Tu nombre de WiFi
+  #define PASSWORD "MiContraseña123"   ◄── Tu contraseña WiFi
+  #define SERVER "http://192.168.1.50:5000"  ◄── IP LOCAL de tu servidor
+
+¿CÓMO ENCONTRAR LA IP DEL SERVIDOR?
+
+En Windows (cmd):
+  ipconfig
+  
+Busca línea "IPv4 Address" bajo tu interfaz de red:
+  Ejemplo: 192.168.1.50
+
+En tu PC con el servidor:
+  python
+  import socket
+  socket.gethostbyname(socket.gethostname())
+
+✓ RESULTADO: Credenciales configuradas
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 5: CREAR ARCHIVO CMakeLists.txt (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+Crea el archivo: c:\Proyecto2\esp32\CMakeLists.txt
+
+Contenido:
+
+  cmake_minimum_required(VERSION 3.5)
+
+  include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+
+  project(bt_acceso)
+
+✓ RESULTADO: CMakeLists.txt creado
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 6: CREAR ARCHIVO idf_component.yml (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+Crea el archivo: c:\Proyecto2\esp32\main\idf_component.yml
+
+Contenido:
+
+  dependencies:
+    idf: ">=5.1"
+
+✓ RESULTADO: Dependencias configuradas
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 7: CONFIGURAR menuconfig (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+⚠️ IMPORTANTE: Bluetooth y WiFi comparten radio 2.4GHz
+
+PASOS:
+
+1. Abrir PowerShell/CMD
+
+2. Navegar a la carpeta del proyecto:
+   cd c:\Proyecto2\esp32
+
+3. Ejecutar:
+   idf.py menuconfig
+
+4. Se abre un menú (interfaz en terminal)
+
+5. Navegar a:
+   Component config → Bluetooth
+
+6. Habilitar:
+   ✓ Bluetooth → Enabled
+   ✓ Bluetooth controller mode → BR/EDR Only
+   ✓ Bluedroid → Classic Bluetooth → SPP
+
+7. Salir (q) y confirmar (y)
+
+8. Se guardará automáticamente
+
+✓ RESULTADO: Bluetooth configurado correctamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 8: COMPILAR EL FIRMWARE (10-15 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En PowerShell/CMD en la carpeta c:\Proyecto2\esp32:
+
+  idf.py build
+
+Esto compilará todo el código.
+
+ESPERAR:
+  • Primera compilación: 10-15 minutos
+  • Compilaciones posteriores: 1-2 minutos
+
+SI HAY ERRORES:
+
+Error: "Cannot find python"
+  → Instalar Python 3.7+
+  → Reiniciar PowerShell después de instalar
+
+Error: "Cannot find ESP-IDF"
+  → Reinstalar ESP-IDF desde el instalador
+
+Error sobre Bluetooth
+  → Revisar que hiciste menuconfig correctamente
+  → Volver a ejecutar: idf.py menuconfig
+
+✓ RESULTADO: Firmware compilado (se crea carpeta "build")
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 9: SUBIR FIRMWARE AL ESP32 (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+REQUISITOS:
+  ✓ ESP32 conectado por USB a la PC
+  ✓ Cable USB funcional (algunos son solo carga)
+
+PASOS:
+
+1. Conectar ESP32 con cable USB
+
+2. Esperar 2 segundos
+
+3. En PowerShell (en c:\Proyecto2\esp32):
+
+   idf.py -p COM3 flash
+
+   (Si COM3 no funciona, intentar COM4, COM5, etc.)
+
+4. El proceso debe mostrar:
+
+   Connecting...
+   Erasing flash
+   Writing at 0x...
+   (barra de progreso)
+   
+   Hard resetting via RTS pin...
+
+5. Esperar a que termine (1-2 minutos)
+
+RESULTADO ESPERADO:
+  ✓ "Hard resetting via RTS pin..." = Éxito
+  ✗ Si hay error, revisar conexión USB
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 10: VERIFICAR CON MONITOR (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Para ver si el ESP32 inició correctamente:
+
+En PowerShell (en c:\Proyecto2\esp32):
+
+  idf.py -p COM3 monitor
+
+Ver los logs (deben mostrar):
+
+  I (xxx) BT_ACC: Wi-Fi conectado
+  I (xxx) BT_ACC: Sistema listo. Conéctate de la app Android.
+
+INDICADORES DE ÉXITO:
+
+✓ Mensajes inicializando
+✓ "Wi-Fi conectado"
+✓ "Sistema listo"
+✓ LED azul encendido en ESP32
+
+INDICADORES DE ERROR:
+
+✗ "Connection timeout"   → Problema USB
+✗ "WiFi error"          → Credenciales WiFi incorrectas
+✗ "MQTT_ERROR"          → Servidor no disponible
+
+Para salir del monitor:
+  Presiona Ctrl+] (o Ctrl+) según tu teclado)
+
+✓ RESULTADO: Firmware corriendo correctamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 11: VERIFICAR BLUETOOTH (3 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En un dispositivo Android (o PC con Bluetooth):
+
+1. Buscar dispositivos Bluetooth
+
+2. Debe aparecer: "ESP32-Acceso"
+
+3. Si no aparece:
+   - Revisar que Bluetooth está habilitado en el monitor
+   - Revisar menuconfig de nuevo
+   - Recompillar: idf.py build
+   - Resubir: idf.py -p COM3 flash
+
+✓ RESULTADO: Bluetooth funciona
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 12: PRUEBA FUNCIONAL (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+REQUISITOS:
+  ✓ ESP32 corriendo (LED azul)
+  ✓ Servidor HTTP ejecutando
+  ✓ App Android instalada
+
+PRUEBA:
+
+1. Desde la app Android:
+   - Buscar dispositivos
+   - Seleccionar ESP32-Acceso
+   - Conectar
+
+2. Ingresar token: TOKEN123
+
+3. Clic "Solicitar Acceso"
+
+4. RESULTADO ESPERADO:
+   ✓ LED VERDE en ESP32 (acceso concedido)
+   ✓ Buzzer emite sonido corto
+   ✓ App muestra: GRANTED
+   ✓ Servidor registra el evento
+
+5. Repetir con token inválido: INVALID
+
+6. RESULTADO ESPERADO:
+   ✓ LED ROJO en ESP32 (acceso denegado)
+   ✓ Buzzer emite sonido largo
+   ✓ App muestra: DENIED
+   ✓ Servidor registra el evento
+
+✓ RESULTADO: ¡SISTEMA COMPLETAMENTE FUNCIONAL!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔧 CONFIGURACIÓN DE HARDWARE (IMPORTANTE)
+───────────────────────────────────────────────────────────────────────────────
+
+Conecta en la protoboard:
+
+COMPONENTE         GPIO      RESISTENCIA
+─────────────────────────────────────────
+LED Rojo           GPIO 25   220Ω
+LED Verde          GPIO 26   220Ω
+LED Azul           GPIO 27   220Ω
+LED (común)        GND       —
+Buzzer (+)         GPIO 32   —
+Buzzer (-)         GND       —
+
+PINOUT ESP32:
+  3V3 → Alimentación
+  GND → Tierra
+  GPIO 25, 26, 27 → LED
+  GPIO 32 → Buzzer
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📝 RESUMEN DE ARCHIVOS A CREAR/COPIAR
+
+c:\Proyecto2\esp32\
+├── main/
+│   ├── main.c              ← Copiar del manual PDF
+│   └── idf_component.yml   ← Crear con dependencias
+├── CMakeLists.txt          ← Crear (configuración cmake)
+└── build/                  ← Se crea automáticamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❓ PREGUNTAS FRECUENTES
+
+P: ¿Dónde consigo el código?
+R: En el PDF manual, sección 3.5.4, archivo bt_access.c
+
+P: ¿Cuál es mi IP local?
+R: Ejecuta "ipconfig" en cmd y busca "IPv4 Address"
+
+P: ¿Qué puerto COM tengo?
+R: Aparece en Device Manager > Ports cuando conectas el ESP32
+
+P: ¿Por qué no se carga el firmware?
+R: Verifica que el cable USB es de datos, no solo carga
+
+P: ¿Se puede con Mac/Linux?
+R: Sí, los comandos son iguales
+
+P: ¿Qué hago si el WiFi no conecta?
+R: Revisar SSID y PASSWORD
+   Intentar con una red 2.4GHz (no 5GHz)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST FINAL
+
+[ ] 1. Instalé ESP-IDF v5.1+
+[ ] 2. Creé carpeta esp32/main/
+[ ] 3. Copié main.c del manual
+[ ] 4. Configuré SSID, PASSWORD, SERVER IP
+[ ] 5. Creé CMakeLists.txt
+[ ] 6. Creé idf_component.yml
+[ ] 7. Ejecuté: idf.py menuconfig
+[ ] 8. Habilitó Bluetooth en menuconfig
+[ ] 9. Compilé: idf.py build (sin errores)
+[ ] 10. Subí: idf.py -p COM3 flash
+[ ] 11. Verifiqué con: idf.py monitor
+[ ] 12. Vi mensajes "Wi-Fi conectado" y "Sistema listo"
+[ ] 13. Probé desde app Android
+[ ] 14. Token autorizado → LED VERDE ✓
+[ ] 15. Token no autorizado → LED ROJO ✓
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎉 ¡LISTO!
+
+Tu sistema de Control de Acceso está completamente integrado:
+  ✓ Servidor HTTP corriendo
+  ✓ App Android instalada
+  ✓ ESP32 con firmware cargado
+  
+¡Ahora puedes usar el sistema completo!
+
+═══════════════════════════════════════════════════════════════════════════════

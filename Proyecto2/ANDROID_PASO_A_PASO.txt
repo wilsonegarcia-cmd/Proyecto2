@@ -1,0 +1,311 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║            🚀 GUÍA PASO A PASO - CREAR APP ANDROID EN 15 MINUTOS             ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+NIVEL: Principiante (No requiere experiencia previa con Android)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+REQUISITOS:
+✓ Android Studio (descargar desde https://developer.android.com/studio)
+✓ Proyecto2 con los archivos generados
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 1: DESCARGAR E INSTALAR ANDROID STUDIO (5 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. Ir a: https://developer.android.com/studio
+2. Descargar "Android Studio Electric Eel" (o versión actual)
+3. Ejecutar instalador
+4. Seleccionar "Standard Installation"
+5. Aceptar licencias
+6. Esperar (toma unos 10-15 min)
+
+✓ Resultado: Android Studio instalado
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 2: CREAR PROYECTO BASE (3 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. Abrir Android Studio
+2. Clic en "New Project"
+3. Seleccionar "Empty Activity"
+4. Clic "Next"
+
+Configurar como:
+   Name: BluetoothAccess
+   Package name: com.example.bluetoothaccess
+   Save location: Puedes dejar la default (luego copiaremos los archivos)
+   Language: Kotlin
+   Minimum API level: 21 (Android 5.0)
+
+5. Clic "Finish"
+6. Esperar a que se abra el proyecto (~2 min)
+
+✓ Resultado: Proyecto base creado
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 3: CONFIGURAR build.gradle (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. En Android Studio, abrir:
+   File → Project Structure
+
+2. En "Modules" → "app" → "Dependencies"
+   Asegurar que tienes (Android Studio agrega automáticamente):
+   ✓ androidx.appcompat:appcompat
+   ✓ com.google.android.material:material
+   ✓ androidx.constraintlayout:constraintlayout
+
+3. Clic OK
+
+ALTERNATIVA (Si quieres editar manualmente):
+   1. Abrir: app/build.gradle
+   2. Verificar que tenga las dependencias de arriba
+   3. Si faltan, copiar desde el archivo build.gradle que generamos
+
+✓ Resultado: Dependencias configuradas
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 4: COPIAR ARCHIVO MainActivity.kt (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. En tu PC, abrir:
+   c:\Users\Eduardo Garcia\Desktop\Proyecto2\MainActivity.kt
+
+2. Copiar TODO el contenido (Ctrl+A, Ctrl+C)
+
+3. En Android Studio:
+   - Abrir: app > java > com.example.bluetoothaccess > MainActivity.kt
+   - Seleccionar TODO (Ctrl+A)
+   - Eliminar (Delete)
+   - Pegar el contenido (Ctrl+V)
+
+4. Guardar (Ctrl+S)
+
+✓ Resultado: MainActivity listo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 5: CREAR ARCHIVO activity_main.xml (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. En Android Studio, clic derecho en:
+   res > layout
+
+2. Seleccionar: New > Layout Resource File
+
+3. Nombre: activity_main
+
+4. Clic OK
+
+5. Copiar contenido desde:
+   c:\Users\Eduardo Garcia\Desktop\Proyecto2\activity_main.xml
+   
+   Y pegarlo en el archivo creado
+
+6. Guardar (Ctrl+S)
+
+✓ Resultado: Layout creado
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 6: ACTUALIZAR strings.xml (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. En Android Studio, abrir:
+   res > values > strings.xml
+
+2. Seleccionar TODO el contenido (Ctrl+A)
+
+3. Eliminar
+
+4. Copiar contenido desde:
+   c:\Users\Eduardo Garcia\Desktop\Proyecto2\strings.xml
+   
+   Y pegarlo
+
+5. Guardar (Ctrl+S)
+
+✓ Resultado: Strings actualizados
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 7: CREAR ARCHIVO colors.xml (1 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. Clic derecho en: res > values
+
+2. New > Values Resource File
+
+3. Nombre: colors
+
+4. Clic OK
+
+5. Copiar contenido desde:
+   c:\Users\Eduardo Garcia\Desktop\Proyecto2\colors.xml
+   
+   Y pegarlo
+
+6. Guardar (Ctrl+S)
+
+✓ Resultado: Colors configurados
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 8: ACTUALIZAR AndroidManifest.xml (1 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. Abrir: app > manifests > AndroidManifest.xml
+
+2. Verificar que tenga estos permisos ANTES de </manifest>:
+
+   <uses-permission android:name="android.permission.BLUETOOTH" />
+   <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+   <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+   <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+   Si no están, copiarlos desde:
+   c:\Users\Eduardo Garcia\Desktop\Proyecto2\android\app\src\main\AndroidManifest.xml
+
+3. Guardar (Ctrl+S)
+
+✓ Resultado: Permisos configurados
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 9: COMPILAR (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. En Android Studio, clic en:
+   Build > Clean Project
+   
+   (Esperar a que termine)
+
+2. Luego:
+   Build > Rebuild Project
+   
+   (Esperar a que compile)
+
+3. Ver resultado en el panel "Build" (abajo)
+
+Si ves errores rojos:
+   - Leer el error
+   - Común: falta usar viewBinding
+   - Solución: Verificar que build.gradle tiene:
+   
+   buildFeatures {
+       viewBinding true
+   }
+
+✓ Resultado: Proyecto compilado exitosamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 10: PREPARAR DISPOSITIVO (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+OPCIÓN A: Dispositivo Android real
+   1. Conectar dispositivo por USB
+   2. Habilitar "Developer Options":
+      - Ajustes > Sobre el dispositivo
+      - Tocar 7 veces: "Build number"
+      - Volver a Ajustes > Developer Options
+      - Habilitar "USB Debugging"
+   3. Aceptar el aviso de USB
+
+OPCIÓN B: Emulador Android
+   1. En Android Studio: Tools > Device Manager
+   2. Clic "Create Virtual Device"
+   3. Seleccionar dispositivo
+   4. Clic "Next"
+   5. Seleccionar "Android 12.0" (API 31)
+   6. Clic "Finish"
+   7. Clic en el botón Play para iniciar el emulador
+
+✓ Resultado: Dispositivo listo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 11: EJECUTAR LA APP (2 min)
+────────────────────────────────────────────────────────────────────────────────
+
+1. En Android Studio, clic en el botón verde ▶️ (Run) o presiona Shift+F10
+
+2. Seleccionar el dispositivo (si hay múltiples)
+
+3. Clic OK
+
+4. Esperar a que compile e instale (~30 seg)
+
+5. La app se abrirá automáticamente en el dispositivo
+
+✓ Resultado: ¡App ejecutándose!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PASO 12: PROBAR LA APP (3 min)
+────────────────────────────────────────────────────────────────────────────────
+
+En la app (en Android):
+
+1. ✓ Ver: Título "🔐 Control de Acceso Bluetooth"
+
+2. ✓ Botón "Buscar Dispositivos":
+   - Clic
+   - Debe pedirte permisos (aceptar todos)
+   - Dice "Escaneando..."
+
+3. ✓ Debería aparecer ESP32-Acceso en la lista
+   (Si tienes ESP32 encendido con Bluetooth activo)
+
+4. ✓ Selecciona ESP32 de la lista
+
+5. ✓ Clic "Conectar"
+
+6. ✓ Si dice "✓ Conectado" = ¡ÉXITO!
+
+7. ✓ Ingresa token: TOKEN123
+
+8. ✓ Clic "Solicitar Acceso"
+
+9. ✓ Debe mostrar: GRANTED (verde) o DENIED (rojo)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ ¡COMPLETADO!
+
+Tu app Android está lista para usar con el sistema de control de acceso.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING RÁPIDO:
+
+Problema                    | Solución
+────────────────────────────┼──────────────────────────────────────
+"Gradle build failed"       | Build > Clean Project, luego Rebuild
+"Cannot resolve symbol R"   | File > Invalidate Caches / Restart
+"viewBinding not configured"| Agregar a build.gradle buildFeatures
+"Device not found"          | Conectar por USB, habilitar USB Debug
+"App no compila"            | Ctrl+Shift+F10 (Run con error logs)
+"Permisos denegados"        | Aceptar permisos en el dispositivo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📚 SIGUIENTE PASO:
+
+Una vez que la app compila y ejecuta:
+
+1. Configurar ESP32 con código del manual
+2. Ejecutar servidor Flask
+3. Conectar todo y probar
+
+═══════════════════════════════════════════════════════════════════════════════

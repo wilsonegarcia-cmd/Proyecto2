@@ -1,0 +1,490 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║              🎯 GUÍA VISUAL MUY SIMPLE - CÓMO ABRIR Y EJECUTAR                ║
+║                                                                                ║
+║                    (Si nunca has usado Terminal/CMD antes)                    ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📍 OPCIÓN 1: LA MÁS FÁCIL (SIN TERMINAL)
+
+Simplemente haz DOBLE-CLIC en un archivo
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1: Abre Explorador de Archivos
+───────────────────────────────────────────────────────────────────────────────
+
+En Windows:
+
+  Presiona: Win + E
+
+O:
+
+  1. Haz clic en el icono de carpeta en la barra de tareas
+  2. Se abre una ventana
+
+Resultado: Ventana de carpetas abierta
+
+  ┌──────────────────────────────────┐
+  │ 🔼 Atrás                   🔍    │
+  │                                  │
+  │ Explorador de archivos           │
+  │ ════════════════════════════════ │
+  │                                  │
+  │ Acceso rápido                    │
+  │  📁 Escritorio                   │
+  │  📁 Documentos                   │
+  │  📁 Descargas                    │
+  │                                  │
+  └──────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2: Ve a la carpeta del proyecto
+───────────────────────────────────────────────────────────────────────────────
+
+En la barra de direcciones (arriba), escribe:
+
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2
+
+Presiona: Enter
+
+Resultado: Se abre la carpeta del proyecto
+
+  ┌────────────────────────────────────────────────────┐
+  │ c:\Users\Eduardo Garcia\Desktop\Proyecto2\        │
+  │                                                    │
+  │ 📄 ANDROID_INSTRUCCIONES.txt                      │
+  │ 📄 ANDROID_PASO_A_PASO.txt                        │
+  │ 📁 android                                         │
+  │ 📄 COMIENZA_AQUI.txt                              │
+  │ 📄 COMO_FUNCIONAR_TODO.txt                        │
+  │ 📄 EMPIEZA_LAS_PRUEBAS.txt                        │
+  │ 📁 esp32                                           │
+  │ 📄 PLAN_EJECUTABLE_FINAL.txt                      │
+  │ 📄 PRUEBAS_INTERACTIVO.py  ← ESTE                 │
+  │ 📁 server                                          │
+  │ ... más archivos ...                              │
+  │                                                    │
+  └────────────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3: Busca y haz DOBLE-CLIC en: PRUEBAS_INTERACTIVO.py
+───────────────────────────────────────────────────────────────────────────────
+
+En la lista de arriba, busca el archivo con icono 🐍 (Python):
+
+  PRUEBAS_INTERACTIVO.py
+
+Haz DOBLE-CLIC en él
+
+Resultado: Se abre una ventana de terminal negra
+
+  ┌──────────────────────────────────────────────────────┐
+  │ 🧪 PRUEBAS - SISTEMA DE CONTROL DE ACCESO...       │
+  │ ════════════════════════════════════════════════    │
+  │                                                      │
+  │ 📌 OPCIONES:                                        │
+  │   1. Instalar dependencias                         │
+  │   2. Iniciar servidor y ejecutar pruebas           │
+  │   3. Pruebas manuales de endpoints                 │
+  │   4. Ver estado del servidor                       │
+  │   0. Salir                                          │
+  │                                                      │
+  │ 👉 Selecciona una opción (0-4):                    │
+  │                                                      │
+  └──────────────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4: Escribe el número: 2
+───────────────────────────────────────────────────────────────────────────────
+
+En la terminal, escribe:
+
+  2
+
+Presiona: Enter
+
+Resultado: El sistema comienza a instalar y probar automáticamente
+
+  ┌──────────────────────────────────────────────────────┐
+  │ 👉 Selecciona una opción (0-4): 2                   │
+  │                                                      │
+  │ ⚠️  Importante:                                     │
+  │   • Se abrirá el servidor en background             │
+  │   • Se ejecutarán 6 pruebas automáticas             │
+  │   • El servidor seguirá corriendo...               │
+  │                                                      │
+  │ 👉 Presiona Enter para continuar...                │
+  │                                                      │
+  └──────────────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 5: Presiona Enter y ESPERA
+───────────────────────────────────────────────────────────────────────────────
+
+Presiona: Enter
+
+La terminal dice: "Presiona Enter para continuar"
+
+Presiona: Enter (otra vez)
+
+Espera: 10 segundos mientras el sistema:
+  1. Instala dependencias (Flask)
+  2. Inicia el servidor
+  3. Ejecuta pruebas
+
+Resultado: VAS A VER ESTO
+
+  ┌──────────────────────────────────────────────────────┐
+  │ Test 1: Verificar token válido...                   │
+  │   ✓ PASS                                             │
+  │                                                      │
+  │ Test 2: Verificar token inválido...                │
+  │   ✓ PASS                                             │
+  │                                                      │
+  │ Test 3: Listar usuarios...                         │
+  │   ✓ PASS                                             │
+  │                                                      │
+  │ Test 4: Agregar usuario...                         │
+  │   ✓ PASS                                             │
+  │                                                      │
+  │ Test 5: Registrar evento...                        │
+  │   ✓ PASS                                             │
+  │                                                      │
+  │ Test 6: Verificar nuevo usuario...                 │
+  │   ✓ PASS                                             │
+  │                                                      │
+  │ ✅ ¡TODAS LAS PRUEBAS PASARON!                     │
+  │                                                      │
+  │ ℹ️  El servidor sigue corriendo...                 │
+  │                                                      │
+  │ 👉 Presiona Enter para volver al menú...           │
+  │                                                      │
+  └──────────────────────────────────────────────────────┘
+
+✅ ¡LISTO! FASE 1 COMPLETADA
+
+El servidor funciona perfectamente.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📍 OPCIÓN 2: USANDO TERMINAL CMD
+
+Si prefieres usar la terminal (un poco más complejo pero igual funciona)
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1: Abre CMD (Símbolo del sistema)
+───────────────────────────────────────────────────────────────────────────────
+
+En Windows:
+
+  Presiona: Win + R
+
+Resultado: Se abre una ventana pequeña
+
+  ┌──────────────────────────────────────┐
+  │ Ejecutar                             │
+  ├──────────────────────────────────────┤
+  │ Abrir:                               │
+  │ ┌──────────────────────────────────┐ │
+  │ │                                  │ │
+  │ └──────────────────────────────────┘ │
+  │                                      │
+  │        [Aceptar] [Cancelar]         │
+  │                                      │
+  └──────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2: Escribe el comando para abrir CMD
+───────────────────────────────────────────────────────────────────────────────
+
+En el campo de texto, escribe:
+
+  cmd
+
+Presiona: Enter
+
+Resultado: Se abre una ventana negra de terminal
+
+  ┌────────────────────────────────────────────┐
+  │ C:\Windows\system32\cmd.exe                │
+  │                                            │
+  │ Microsoft Windows [Versión 10.0.19045]    │
+  │ (c) Microsoft Corporation. Todos los dere │
+  │                                            │
+  │ C:\Users\Eduardo Garcia>                  │
+  │                                            │
+  └────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3: Ve a la carpeta del proyecto
+───────────────────────────────────────────────────────────────────────────────
+
+En la terminal (donde dice C:\Users\Eduardo Garcia>), escribe:
+
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2
+
+Presiona: Enter
+
+Resultado: La terminal cambia
+
+  ┌────────────────────────────────────────────┐
+  │ C:\Users\Eduardo Garcia\Desktop\Proyecto2> │
+  │                                            │
+  └────────────────────────────────────────────┘
+
+✓ Ahora estás en la carpeta correcta
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4: Ejecuta el script
+───────────────────────────────────────────────────────────────────────────────
+
+En la terminal, escribe:
+
+  python PRUEBAS_INTERACTIVO.py
+
+Presiona: Enter
+
+Resultado: El script comienza
+
+  ┌────────────────────────────────────────────────────┐
+  │ C:\Users\Eduardo Garcia\Desktop\Proyecto2>        │
+  │ python PRUEBAS_INTERACTIVO.py                      │
+  │                                                    │
+  │ 🧪 PRUEBAS - SISTEMA DE CONTROL...               │
+  │ ════════════════════════════════════════════     │
+  │                                                    │
+  │ 📌 OPCIONES:                                      │
+  │   1. Instalar dependencias                       │
+  │   2. Iniciar servidor y ejecutar pruebas         │
+  │   3. Pruebas manuales de endpoints               │
+  │   4. Ver estado del servidor                     │
+  │   0. Salir                                        │
+  │                                                    │
+  │ 👉 Selecciona una opción (0-4):                  │
+  │                                                    │
+  └────────────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 5: Selecciona opción 2
+───────────────────────────────────────────────────────────────────────────────
+
+Escribe:
+
+  2
+
+Presiona: Enter
+
+Espera: 10 segundos
+
+Resultado: Lo mismo que en OPCIÓN 1 - verás las 6 pruebas
+
+  ┌────────────────────────────────────────────────────┐
+  │ 👉 Selecciona una opción (0-4): 2                │
+  │                                                    │
+  │ ⚠️  Importante:                                  │
+  │   • Se abrirá el servidor en background           │
+  │   • Se ejecutarán 6 pruebas automáticas           │
+  │   • El servidor seguirá corriendo...             │
+  │                                                    │
+  │ 👉 Presiona Enter para continuar...              │
+  │                                                    │
+  │                                                    │
+  │ Test 1: Verificar token válido...                │
+  │   ✓ PASS                                          │
+  │ Test 2: Verificar token inválido...             │
+  │   ✓ PASS                                          │
+  │ ... más pruebas ...                              │
+  │                                                    │
+  │ ✅ ¡TODAS LAS PRUEBAS PASARON!                  │
+  │                                                    │
+  └────────────────────────────────────────────────────┘
+
+✅ ¡LISTO! FASE 1 COMPLETADA
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📍 OPCIÓN 3: FORMA COMPLETAMENTE MANUAL (Sin scripts)
+
+Si el script no funciona, aquí está lo más manual
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1-3: Igual que OPCIÓN 2 (abre CMD, ve a carpeta)
+───────────────────────────────────────────────────────────────────────────────
+
+Win+R → cmd → Enter
+cd c:\Users\Eduardo Garcia\Desktop\Proyecto2
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4: Ve a la subcarpeta server
+───────────────────────────────────────────────────────────────────────────────
+
+Escribe:
+
+  cd server
+
+Presiona: Enter
+
+Resultado:
+
+  ┌────────────────────────────────────────────────────────┐
+  │ C:\Users\Eduardo Garcia\Desktop\Proyecto2\server>     │
+  │                                                        │
+  └────────────────────────────────────────────────────────┘
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 5: Instala las dependencias
+───────────────────────────────────────────────────────────────────────────────
+
+Escribe:
+
+  python -m pip install flask requests --quiet
+
+Presiona: Enter
+
+Espera: 30 segundos (mientras descarga e instala)
+
+Resultado: Termina sin errores
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 6: Inicia el servidor
+───────────────────────────────────────────────────────────────────────────────
+
+Escribe:
+
+  python app.py
+
+Presiona: Enter
+
+Resultado:
+
+  ┌────────────────────────────────────────────────────────┐
+  │ WARNING in app.run() from the development server...   │
+  │                                                        │
+  │  * Running on http://0.0.0.0:5000                    │
+  │  * Press CTRL+C to quit                              │
+  │                                                        │
+  └────────────────────────────────────────────────────────┘
+
+✓ El servidor está corriendo
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 7: Abre OTRA terminal (sin cerrar la primera)
+───────────────────────────────────────────────────────────────────────────────
+
+IMPORTANTE: Mantén esta ventana abierta
+
+Abre una NUEVA terminal:
+  Win+R → cmd → Enter
+
+Ve a la carpeta:
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 8: Ejecuta las pruebas
+───────────────────────────────────────────────────────────────────────────────
+
+En la SEGUNDA terminal, escribe:
+
+  python test_api.py
+
+Presiona: Enter
+
+Resultado: VAS A VER
+
+  ┌────────────────────────────────────────────────────────┐
+  │ Test 1: Verificar token válido (TOKEN123)            │
+  │   Response: {'autorizado': True, 'nombre':...}       │
+  │   ✓ PASS                                              │
+  │                                                        │
+  │ Test 2: Verificar token inválido                     │
+  │   Response: {'autorizado': False}                    │
+  │   ✓ PASS                                              │
+  │                                                        │
+  │ ... más pruebas ...                                   │
+  │                                                        │
+  │ ✅ RESULTADO: 6/6 PRUEBAS PASARON                   │
+  │                                                        │
+  └────────────────────────────────────────────────────────┘
+
+✅ ¡LISTO! FASE 1 COMPLETADA
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 RESUMEN - ELIGE UNO
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│  ⭐ OPCIÓN 1 (La MÁS FÁCIL - RECOMENDADA)                                    │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                                  │
+│                                                                              │
+│  1. Win+E (abre carpetas)                                                   │
+│  2. Escribe en la barra: c:\Users\Eduardo Garcia\Desktop\Proyecto2          │
+│  3. DOBLE-CLIC en: PRUEBAS_INTERACTIVO.py                                   │
+│  4. Escribe: 2                                                               │
+│  5. Presiona: Enter                                                          │
+│  6. Espera: 10 segundos                                                      │
+│  7. VER: 6/6 pruebas pasan ✓                                                │
+│                                                                              │
+│  Tiempo: 5 minutos                                                           │
+│  Dificultad: ⭐ MUY FÁCIL                                                    │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  OPCIÓN 2 (Usando Terminal CMD)                                             │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                                 │
+│                                                                              │
+│  1. Win+R                                                                    │
+│  2. Escribe: cmd                                                             │
+│  3. Enter                                                                    │
+│  4. cd c:\Users\Eduardo Garcia\Desktop\Proyecto2                            │
+│  5. python PRUEBAS_INTERACTIVO.py                                           │
+│  6. Escribe: 2 y Enter                                                       │
+│  7. VER: 6/6 pruebas pasan ✓                                                │
+│                                                                              │
+│  Tiempo: 5 minutos                                                           │
+│  Dificultad: ⭐⭐ FÁCIL                                                      │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  OPCIÓN 3 (Completamente Manual)                                            │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                                 │
+│                                                                              │
+│  1. Win+R → cmd → Enter                                                      │
+│  2. cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server                     │
+│  3. pip install flask requests                                              │
+│  4. python app.py (en Terminal 1)                                           │
+│  5. python test_api.py (en Terminal 2 nueva)                               │
+│  6. VER: 6/6 pruebas pasan ✓                                                │
+│                                                                              │
+│  Tiempo: 10 minutos                                                          │
+│  Dificultad: ⭐⭐⭐ INTERMEDIO                                               │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CONSEJO: USA OPCIÓN 1
+
+Es la más fácil y no necesitas escribir comandos complicados.
+
+Solo 3 pasos:
+  1. Abre carpeta (Win+E)
+  2. DOBLE-CLIC en PRUEBAS_INTERACTIVO.py
+  3. Escribe 2 y Enter
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¿TODAVÍA CONFUNDIDO?
+
+Envíame un mensaje y te digo exactamente dónde hacer clic. 
+
+Te haré una guía de fotos si es necesario.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¡Adelante! ¡Tú puedes! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════

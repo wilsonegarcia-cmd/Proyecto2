@@ -1,0 +1,664 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║              🎯 PLAN PARA HACER FUNCIONAR EL PROYECTO COMPLETO               ║
+║                                                                                ║
+║          Sistema de Control de Acceso con Bluetooth - ROADMAP FINAL           ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📍 MAPA DE RUTA - CUATRO FASES
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │                                                             │
+  │  FASE 1: SERVIDOR FLASK        (5 min)    ← HABLEMOS AQUÍ │
+  │          ✓ Pruebas automáticas                              │
+  │          ✓ Base de datos SQLite                             │
+  │          ✓ 4 endpoints funcionando                          │
+  │                                                             │
+  │  FASE 2: APP ANDROID           (30 min)   ← LUEGO ESTA    │
+  │          ✓ Compilar en Android Studio                       │
+  │          ✓ Bluetooth SPP                                    │
+  │          ✓ Interfaz gráfica                                 │
+  │                                                             │
+  │  FASE 3: FIRMWARE ESP32        (1-2 hrs)  ← DESPUÉS ESTO  │
+  │          ✓ Instalar ESP-IDF                                │
+  │          ✓ Compilar código                                 │
+  │          ✓ Subir a la placa                                 │
+  │                                                             │
+  │  FASE 4: INTEGRACIÓN COMPLETA  (30 min)   ← AL FINAL AQUÍ │
+  │          ✓ Conectar app a ESP32                             │
+  │          ✓ Verificar LED y buzzer                           │
+  │          ✓ Probar tokens                                    │
+  │                                                             │
+  └─────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟢 FASE 1: SERVIDOR FLASK (5 MINUTOS) ← COMIENZA AQUÍ
+
+El servidor es lo más fácil. No necesitas hardware, solo Python.
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1.1: Abre Python (método más fácil)
+───────────────────────────────────────────────────────────────────────────────
+
+Windows - Opción A (La MÁS FÁCIL):
+  1. Abre Explorador (Win+E)
+  2. Ve a: c:\Users\Eduardo Garcia\Desktop\Proyecto2\
+  3. Haz DOBLE-CLIC en: PRUEBAS_INTERACTIVO.py
+  
+  Resultado: Se abre menú con opciones
+
+Windows - Opción B (Por terminal):
+  1. Win+R
+  2. cmd
+  3. Enter
+  4. Escribe: cd c:\Users\Eduardo Garcia\Desktop\Proyecto2
+  5. Escribe: python PRUEBAS_INTERACTIVO.py
+  6. Enter
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1.2: En el Menú que aparece
+───────────────────────────────────────────────────────────────────────────────
+
+Verás:
+
+  🧪 PRUEBAS - SISTEMA DE CONTROL DE ACCESO BLUETOOTH
+  ═════════════════════════════════════════════════════
+
+  📌 OPCIONES:
+    1. Instalar dependencias
+    2. Iniciar servidor y ejecutar pruebas automáticas
+    3. Pruebas manuales de endpoints
+    4. Ver estado del servidor
+    0. Salir
+
+  👉 Selecciona una opción (0-4): 
+
+ESCRIBE: 2
+PRESIONA: Enter
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1.3: Espera 10 segundos
+───────────────────────────────────────────────────────────────────────────────
+
+El sistema:
+  1. Instala Flask y requests (si no los tiene)
+  2. Inicia el servidor
+  3. Ejecuta 6 pruebas automáticas
+  4. Muestra resultados
+
+Verás:
+
+  ========================
+    EJECUTANDO PRUEBAS AUTOMÁTICAS
+  ========================
+
+  Test 1: Verificar token válido (TOKEN123)
+    Response: {'autorizado': True, 'nombre': 'Usuario Autorizado'}
+    ✓ PASS
+
+  Test 2: Verificar token inválido (INVALID)
+    Response: {'autorizado': False}
+    ✓ PASS
+
+  Test 3: Listar usuarios
+    ✓ PASS
+
+  Test 4: Agregar nuevo usuario
+    Response: {'status': 'agregado'}
+    ✓ PASS
+
+  Test 5: Registrar evento de acceso
+    Response: {'status': 'registrado'}
+    ✓ PASS
+
+  Test 6: Verificar nuevo usuario
+    Response: {'autorizado': True, 'nombre': 'Nuevo Usuario de Prueba'}
+    ✓ PASS
+
+  ✅ ¡TODAS LAS PRUEBAS PASARON!
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 1.4: SI VES ✓ PASS EN LAS 6 PRUEBAS = ÉXITO
+───────────────────────────────────────────────────────────────────────────────
+
+✅ ¡EL SERVIDOR FUNCIONA PERFECTAMENTE!
+
+El servidor está corriendo y listo. Puedes hacer pruebas manuales si quieres
+(opción 3 del menú), pero NO es necesario.
+
+Presiona Enter para volver al menú.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟡 FASE 2: APP ANDROID (30 MINUTOS) ← SIGUIENTE PASO
+
+Después que las pruebas del servidor pasen ✓
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2.1: Descargar Android Studio (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+1. Ve a: https://developer.android.com/studio
+
+2. Haz clic: "Download Android Studio"
+
+3. Instala siguiendo el wizard
+
+4. Abre Android Studio
+
+Resultado: Android Studio abierto
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2.2: Crear Nuevo Proyecto Android (3 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En Android Studio:
+
+1. File → New → New Android Project
+
+2. Rellena así:
+   • Name: BluetoothAccess
+   • Package name: com.example.bluetoothaccess
+   • Language: Kotlin
+   • Minimum API: 21
+   • Click "Finish"
+
+Espera: 2-3 minutos a que cree el proyecto
+
+Resultado: Proyecto BluetoothAccess abierto
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2.3: Copiar 4 Archivos del Proyecto (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Tienes 4 archivos en: c:\Users\Eduardo Garcia\Desktop\Proyecto2\
+
+Archivos a copiar:
+  1. MainActivity.kt
+  2. activity_main.xml
+  3. strings.xml
+  4. colors.xml
+
+Destinos:
+
+  MainActivity.kt
+    → app/src/main/java/com/example/bluetoothaccess/MainActivity.kt
+  
+  activity_main.xml
+    → app/src/main/res/layout/activity_main.xml
+  
+  strings.xml
+    → app/src/main/res/values/strings.xml
+  
+  colors.xml
+    → app/src/main/res/values/colors.xml
+
+CÓMO COPIAR:
+
+  En Android Studio:
+  1. Project → Android (si no está visible)
+  2. Ve a: app → src → main → java → com/example/bluetoothaccess
+  3. Delete: MainActivity.kt (si existe)
+  4. Right-click → New → File
+  5. Escribe: MainActivity.kt
+  6. Copia el contenido del archivo (usa Notepad)
+  7. Pégalo en Android Studio
+  8. Repite para activity_main.xml, strings.xml, colors.xml
+
+Resultado: 4 archivos copiados en sus lugares
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2.4: Verificar Dependencies en build.gradle (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+1. Abre: app/build.gradle
+
+2. Busca la sección "dependencies"
+
+3. Verifica que tenga:
+
+  implementation 'androidx.appcompat:appcompat:1.4.1'
+  implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+  implementation 'androidx.activity:activity-ktx:1.4.0'
+
+4. Si no están, agrégalas
+
+Resultado: Dependencies actualizado
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2.5: Compilar (10 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En Android Studio:
+
+1. Build → Make Project
+
+O si prefieres terminal dentro del proyecto:
+
+  gradlew build
+
+Espera: 5-10 minutos
+
+Resultado esperado: "BUILD SUCCESSFUL"
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 2.6: Instalar en Dispositivo (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+REQUISITO: Dispositivo Android con Bluetooth, conectado por USB
+
+Pasos:
+
+1. Conecta dispositivo Android por USB
+
+2. En Android Studio:
+   Run → Run 'app'
+
+O si prefieres terminal:
+
+  gradlew installDebug
+
+Espera: 2-5 minutos
+
+Resultado: App se instala en el dispositivo
+
+✅ ¡APP ANDROID FUNCIONANDO!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔵 FASE 3: FIRMWARE ESP32 (1-2 HORAS) ← TERCERA FASE
+
+Después que Android esté compilado
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.1: Instalar ESP-IDF v5.1+ (15 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Windows:
+
+1. Ve a: https://github.com/espressif/esp-idf/releases
+
+2. Busca: esp-idf-tools-setup-x.x.exe
+
+3. Descarga y ejecuta
+
+4. Sigue el wizard (siguiente, siguiente, siguiente)
+
+Resultado: ESP-IDF instalado y agregado a PATH
+
+Verifica:
+  • Abre CMD
+  • Escribe: idf.py --version
+  • Debería mostrar: ESP-IDF v5.1.x (o superior)
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.2: Crear Estructura del Proyecto (2 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Crea carpetas (si no existen):
+
+  c:\Users\Eduardo Garcia\Desktop\Proyecto2\esp32\main\
+
+Dentro de "main" necesitas:
+  • main.c (el código - lo copiarás en el siguiente paso)
+  • CMakeLists.txt (configuración)
+  • Kconfig.projbuild (configuración)
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.3: Copiar Código ESP32 (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Archivo fuente: CODIGO_ESP32.txt
+(ubicado en: c:\Users\Eduardo Garcia\Desktop\Proyecto2\CODIGO_ESP32.txt)
+
+1. Abre CODIGO_ESP32.txt
+2. Copia TODO el contenido
+3. Pega en: esp32/main/main.c
+
+Resultado: main.c con todo el código
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.4: Configurar WiFi y Servidor (3 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Abre esp32/main/main.c con editor de texto
+
+Busca estas líneas (arriba del código, cerca de la línea 20-30):
+
+  #define WIFI_SSID "TU_RED_WIFI"
+  #define WIFI_PASSWORD "TU_CONTRASEÑA"
+  #define SERVER_IP "192.168.1.100"
+  #define SERVER_PORT 5000
+
+CAMBIA A:
+
+  #define WIFI_SSID "TU_RED_ACTUAL"      ← Tu WiFi real
+  #define WIFI_PASSWORD "TU_PASSWORD"     ← Tu contraseña real
+  #define SERVER_IP "192.168.X.X"         ← IP de tu PC
+  #define SERVER_PORT 5000
+
+¿CÓMO ENCONTRAR LA IP DE TU PC?
+
+  En CMD escribe: ipconfig
+  
+  Busca:
+    IPv4 Address: 192.168.X.X  ← ESE NÚMERO
+
+Ejemplo:
+  #define WIFI_SSID "Mi_WiFi"
+  #define WIFI_PASSWORD "Mipasword123"
+  #define SERVER_IP "192.168.1.50"
+  #define SERVER_PORT 5000
+
+Resultado: Código configurado con tus datos
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.5: Conectar ESP32 por USB (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+1. Conecta ESP32 a la computadora por cable USB
+
+2. Windows detectará el puerto COM (COM3, COM4, etc.)
+
+Verifica:
+  • Device Manager → Ports
+  • Busca: "COM..." (anota el número, ej: COM3)
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.6: Compilar ESP32 (10 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En CMD:
+
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\esp32
+  idf.py build
+
+Espera: 5-10 minutos
+
+Resultado esperado: "✓ Project built successfully"
+
+Si hay error, reinicia desde PASO 3.1
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 3.7: Subir a la Placa ESP32 (5 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En CMD (misma carpeta esp32):
+
+  idf.py -p COM3 flash
+
+(Cambiar COM3 por tu puerto real)
+
+Espera: 5-10 segundos
+
+Verás algo como:
+  
+  Hard resetting esp32...
+  Leaving...
+  (espera 5 segundos)
+
+Resultado: Firmware cargado en ESP32
+
+─────────────────────────────────────────────────────────────────────────────
+PASO 3.8: Verificar que ESP32 está Listo (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+En CMD:
+
+  idf.py -p COM3 monitor
+
+Verás logs como:
+
+  I (XXX) BT: Bluetooth Initialized
+  I (XXX) WIFI: WiFi Initialized
+  I (XXX) WIFI: Connected to WiFi
+  (LED azul debe encender)
+
+Presiona Ctrl+] para salir
+
+✅ ¡ESP32 FUNCIONANDO!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟣 FASE 4: INTEGRACIÓN COMPLETA (30 MINUTOS) ← FINAL
+
+Ahora conectas todo y pruebas el sistema completo
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.1: Iniciar Servidor (2 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+Terminal 1:
+
+  cd c:\Users\Eduardo Garcia\Desktop\Proyecto2\server
+  python app.py
+
+Verás:
+  * Running on http://0.0.0.0:5000
+
+✅ Servidor corriendo
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.2: Encender ESP32 (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+Si apagaste el ESP32:
+  • Conéctalo por USB
+  • Espera 3 segundos
+  • LED azul debe prender
+
+Verifica en Terminal (con idf.py monitor):
+  I (XXX) WIFI: Connected to WiFi
+
+✅ ESP32 conectado a WiFi y listo
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.3: Abrir App Android en Dispositivo (2 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+1. En el dispositivo Android (físico)
+2. Abre: BluetoothAccess (la app que compilaste)
+3. Haz clic: "🔍 Buscar Dispositivos"
+
+Espera: 10-15 segundos
+
+Resultado: Debería ver "ESP32-Acceso" en la lista
+
+Si NO aparece:
+  ✓ Verificar que Bluetooth está ON
+  ✓ Verificar que ESP32 está prendido
+  ✓ Intentar de nuevo
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.4: Conectar App a ESP32 (3 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+1. En la app Android: Selecciona "ESP32-Acceso"
+2. Haz clic: "🔗 Conectar"
+3. Espera: 2-3 segundos
+
+Resultado esperado:
+  • App muestra: "✓ Conectado"
+  • ESP32 LED: Azul constante
+
+Si falla:
+  ✓ Esperar 3 segundos
+  ✓ Intentar otra vez
+  ✓ Reiniciar ESP32
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.5: PRUEBA 1 - Token Autorizado (3 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En la app Android (conectada a ESP32):
+
+1. Escribe en el campo de texto: TOKEN123
+2. Haz clic: "✓ Verificar Acceso"
+3. Espera: 2-3 segundos
+
+RESULTADO ESPERADO:
+
+  En App Android:
+    • Muestra: "GRANTED" (en VERDE)
+    • Toast: "✓ ACCESO CONCEDIDO"
+  
+  En ESP32:
+    • LED: VERDE (3 segundos)
+    • Buzzer: Sonido corto (beep)
+  
+  En Servidor (Terminal 1):
+    • Verás un log de acceso
+
+✅ TOKEN AUTORIZADO FUNCIONA
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.6: PRUEBA 2 - Token No Autorizado (3 minutos)
+───────────────────────────────────────────────────────────────────────────────
+
+En la app Android:
+
+1. Escribe: INVALID
+2. Haz clic: "✓ Verificar Acceso"
+3. Espera: 2-3 segundos
+
+RESULTADO ESPERADO:
+
+  En App Android:
+    • Muestra: "DENIED" (en ROJO)
+    • Toast: "✗ ACCESO DENEGADO"
+  
+  En ESP32:
+    • LED: ROJO (3 segundos)
+    • Buzzer: Sonido largo (beeeeep)
+  
+  En Servidor (Terminal 1):
+    • Verás un log de acceso denegado
+
+✅ TOKEN NO AUTORIZADO FUNCIONA
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.7: PRUEBA 3 - Registrar Nuevo Usuario (3 minutos - Optional)
+───────────────────────────────────────────────────────────────────────────────
+
+Terminal 3 (nueva):
+
+  curl -X POST "http://localhost:5000/usuarios" \
+    -H "Content-Type: application/json" \
+    -d "{\"token\": \"MI_TOKEN\", \"nombre\": \"Mi Usuario\"}"
+
+Resultado: {"status":"agregado"}
+
+Luego en la app Android:
+  1. Escribe: MI_TOKEN
+  2. "✓ Verificar Acceso"
+  3. Debería ser GRANTED (porque acabas de agregarlo)
+
+✅ NUEVO USUARIO FUNCIONA
+
+───────────────────────────────────────────────────────────────────────────────
+PASO 4.8: Desconectar (1 minuto)
+───────────────────────────────────────────────────────────────────────────────
+
+En la app Android:
+  • Haz clic: "🔌 Desconectar"
+
+Resultado:
+  • App muestra: "✗ Desconectado"
+  • ESP32 LED: Apagado
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ ¡SISTEMA COMPLETAMENTE FUNCIONAL!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 FLUJO FINAL COMPLETO
+
+Usuario abre app Android
+        ↓
+Busca "ESP32-Acceso"
+        ↓
+Se conecta por Bluetooth SPP
+        ↓
+Escribe TOKEN123
+        ↓
+Envía a ESP32
+        ↓
+ESP32 consulta: GET /check?token=TOKEN123
+        ↓
+Servidor responde: {"autorizado": true}
+        ↓
+ESP32:
+  • LED VERDE (3 segundos)
+  • Buzzer: beep corto (150ms)
+  • Responde: "GRANTED"
+        ↓
+App muestra: GRANTED (verde)
+        ↓
+✅ ACCESO CONCEDIDO
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️ RESUMEN DE TIEMPO
+
+Fase 1 (Servidor):       5 min   ← Empieza aquí AHORA
+Fase 2 (Android):        30 min  ← Después
+Fase 3 (ESP32):          1-2 hrs ← Luego
+Fase 4 (Integración):    30 min  ← Al final
+
+TIEMPO TOTAL:            ~2-3 horas
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 COMIENZA AHORA - FASE 1
+
+EJECUTA UNA DE ESTAS:
+
+Opción 1 (Más fácil):
+  python PRUEBAS_INTERACTIVO.py
+
+Opción 2 (Automático):
+  TERMINAR_PROYECTO.bat (doble-clic)
+
+Opción 3 (Manual):
+  cd server && python -m pip install flask requests --quiet && python app.py
+  (en otra terminal) cd server && python test_api.py
+
+Cuando veas "6/6 PRUEBAS PASARON ✓":
+  → Continúa con FASE 2 (Android)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ CONCLUSIÓN
+
+Tienes 4 fases claras. Cada una con pasos específicos. 
+
+Comienza con FASE 1 (5 minutos). Después sigue FASE 2, 3, 4 en orden.
+
+En ~2-3 horas tendrás el sistema completamente funcional.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¿PREGUNTAS?
+
+• ¿Por dónde empiezo?
+  → Ejecuta: python PRUEBAS_INTERACTIVO.py
+
+• ¿Qué voy a ver?
+  → 6 pruebas pasando: "✓ PASS"
+
+• ¿Luego qué?
+  → Lee: ANDROID_PASO_A_PASO.txt
+
+• ¿Tengo todo lo necesario?
+  → Sí, está todo en el proyecto
+
+═══════════════════════════════════════════════════════════════════════════════
+
+¡A trabajar! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════
